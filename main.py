@@ -9,8 +9,22 @@ batch_size = 32
 img_height = 180
 img_width = 180
 
-training_data_path = 'dataset/train'
+training_data_path = 'dataset_mix/train'
 # test_data_path = 'dataset/test'
+
+
+def predict(img_path):
+    img = tf.keras.utils.load_img(
+        img_path, target_size=(img_height, img_width)
+    )
+    img_array = tf.keras.utils.img_to_array(img)
+    img_array = tf.expand_dims(img_array, 0)  # Create a batch
+    predictions = model.predict(img_array)
+    score = tf.nn.softmax(predictions[0])
+
+    print("This image most likely belongs to {} with a {:.2f} percent confidence."
+          .format(class_names[np.argmax(score)], 100 * np.max(score)))
+
 
 if __name__ == '__main__':
     training_data = image_dataset_from_directory(
@@ -81,7 +95,7 @@ if __name__ == '__main__':
 
     model.summary()
 
-    epochs = 50
+    epochs = 10
     history = model.fit(
         training_data,
         validation_data=validation_data,
@@ -110,26 +124,13 @@ if __name__ == '__main__':
     plt.title('Training and Validation Loss')
     plt.show()
 
-    img = tf.keras.utils.load_img(
-        'dataset/test/edible/ce (244).jpg', target_size=(img_height, img_width)
-    )
-    img_array = tf.keras.utils.img_to_array(img)
-    img_array = tf.expand_dims(img_array, 0)  # Create a batch
-    predictions = model.predict(img_array)
-    score = tf.nn.softmax(predictions[0])
-
-    print("This image most likely belongs to {} with a {:.2f} percent confidence."
-          .format(class_names[np.argmax(score)], 100 * np.max(score)))
-
-    img = tf.keras.utils.load_img(
-        'dataset/test/poisonous/cv (40).jpg', target_size=(img_height, img_width)
-    )
-    img_array = tf.keras.utils.img_to_array(img)
-    img_array = tf.expand_dims(img_array, 0)  # Create a batch
-    predictions = model.predict(img_array)
-    score = tf.nn.softmax(predictions[0])
-
-    print("This image most likely belongs to {} with a {:.2f} percent confidence."
-          .format(class_names[np.argmax(score)], 100 * np.max(score)))
+    predict('dataset_mix/test/ama1.jpg')
+    predict('dataset_mix/test/ama2.jpg')
+    predict('dataset_mix/test/ama3.jpg')
+    predict('dataset_mix/test/ama4.jpg')
+    predict('dataset_mix/test/bol1.jpg')
+    predict('dataset_mix/test/bol2.jpg')
+    predict('dataset_mix/test/bol3.jpg')
+    predict('dataset_mix/test/bol4.jpg')
 
     model.save('saved_model/my_model')

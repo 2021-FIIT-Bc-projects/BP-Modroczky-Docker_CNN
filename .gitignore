@@ -7,9 +7,7 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # Dataset
-dataset
-dataset_big
-dataset_small
+dataset*
 saved_model
 
 # User-specific stuff
