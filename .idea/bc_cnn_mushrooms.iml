@@ -2,12 +2,20 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/data" />
       <excludeFolder url="file://$MODULE_DIR$/dataset" />
+      <excludeFolder url="file://$MODULE_DIR$/dataset_10_classes" />
+      <excludeFolder url="file://$MODULE_DIR$/dataset_1394_classes" />
+      <excludeFolder url="file://$MODULE_DIR$/dataset_418_classes" />
+      <excludeFolder url="file://$MODULE_DIR$/dataset_amanita_boletus" />
       <excludeFolder url="file://$MODULE_DIR$/dataset_big" />
       <excludeFolder url="file://$MODULE_DIR$/dataset_dub_much" />
+      <excludeFolder url="file://$MODULE_DIR$/dataset_edible_poisonous" />
       <excludeFolder url="file://$MODULE_DIR$/dataset_mix" />
       <excludeFolder url="file://$MODULE_DIR$/dataset_small" />
+      <excludeFolder url="file://$MODULE_DIR$/models" />
       <excludeFolder url="file://$MODULE_DIR$/saved_model" />
+      <excludeFolder url="file://$MODULE_DIR$/saved_models" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

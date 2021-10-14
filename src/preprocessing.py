@@ -1,8 +1,8 @@
 import os
 from shutil import copyfile
 
-path = "..\\bc_cnn_mushrooms\\dataset_big\\train"
-new_path = "..\\bc_cnn_mushrooms\\dataset\\train"
+path = "..\\data\\dataset_1394_classes\\train"
+new_path = "..\\data\\dataset_418_classes\\train"
 
 classes = set()
 
