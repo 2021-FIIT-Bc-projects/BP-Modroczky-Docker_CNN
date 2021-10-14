@@ -8,8 +8,8 @@ img_height = 180
 img_width = 180
 epochs = 100
 seed = 27
-checkpoint_path = 'models/cnn_amanita_boletus_mix'
-training_data_path = 'data/dataset_amanita_boletus_mix/train'
+checkpoint_path = '../models/cnn_amanita_boletus_mix'
+training_data_path = '../data/dataset_amanita_boletus_mix/train'
 
 
 def predict(img_path):
@@ -124,11 +124,11 @@ if __name__ == '__main__':
 
     plt.show()
 
-    predict('data/dataset_amanita_boletus_mix/test/ama1.jpg')
-    predict('data/dataset_amanita_boletus_mix/test/ama2.jpg')
-    predict('data/dataset_amanita_boletus_mix/test/ama3.jpg')
-    predict('data/dataset_amanita_boletus_mix/test/ama4.jpg')
-    predict('data/dataset_amanita_boletus_mix/test/bol1.jpg')
-    predict('data/dataset_amanita_boletus_mix/test/bol2.jpg')
-    predict('data/dataset_amanita_boletus_mix/test/bol3.jpg')
-    predict('data/dataset_amanita_boletus_mix/test/bol4.jpg')
+    predict('../data/dataset_amanita_boletus_mix/test/ama1.jpg')
+    predict('../data/dataset_amanita_boletus_mix/test/ama2.jpg')
+    predict('../data/dataset_amanita_boletus_mix/test/ama3.jpg')
+    predict('../data/dataset_amanita_boletus_mix/test/ama4.jpg')
+    predict('../data/dataset_amanita_boletus_mix/test/bol1.jpg')
+    predict('../data/dataset_amanita_boletus_mix/test/bol2.jpg')
+    predict('../data/dataset_amanita_boletus_mix/test/bol3.jpg')
+    predict('../data/dataset_amanita_boletus_mix/test/bol4.jpg')
