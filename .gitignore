@@ -10,6 +10,12 @@
 data
 models
 
+# Environment variables
+.env
+
+# Saved plots
+plots
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
