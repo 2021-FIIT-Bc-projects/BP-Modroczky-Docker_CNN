@@ -14,14 +14,12 @@
       <excludeFolder url="file://$MODULE_DIR$/dataset_mix" />
       <excludeFolder url="file://$MODULE_DIR$/dataset_small" />
       <excludeFolder url="file://$MODULE_DIR$/models" />
+      <excludeFolder url="file://$MODULE_DIR$/plots" />
       <excludeFolder url="file://$MODULE_DIR$/saved_model" />
       <excludeFolder url="file://$MODULE_DIR$/saved_models" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (bc_cnn)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-  </component>
-  <component name="PackageRequirementsSettings">
-    <option name="versionSpecifier" value="Greater or equal (&gt;=x.y.z)" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="renderExternalDocumentation" value="true" />

@@ -27,7 +27,7 @@ def predict():
 
     for prediction in predictions:
         class_prediction = (prediction[0] > 0.5).astype("int32")
-        class_name = 'amanita' if class_prediction == 0 else 'boletus'
+        class_name = settings.class_names[class_prediction]
         probability = 100 - (prediction[0] * 100) if class_name == 'amanita' else prediction[0] * 100
         print('This fungi image belongs to {} with probability of {:.2f}%'.format(class_name, probability))
 
