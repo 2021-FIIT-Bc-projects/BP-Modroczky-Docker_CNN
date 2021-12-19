@@ -47,4 +47,3 @@ for class_name in classes:
                 f.write("{}\n".format(str(name)))
             except Exception as e:
                 print(e)
-        f.close()
