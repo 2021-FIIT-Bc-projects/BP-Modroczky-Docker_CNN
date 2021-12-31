@@ -20,16 +20,16 @@ class_names = ['amanita', 'boletus', 'cantharellus', 'morchella']
 model = load_model(model_path)
 
 
-def predict_and_evaluate():
+def predict_and_evaluate(images, labels, class_names):
     test_data_batch = np.array(images)
     print(test_data_batch.shape)
 
     predictions = model.predict(test_data_batch)
-    predicted = np.argmax(predictions, axis=1)
+    predicted_labels = np.argmax(predictions, axis=1)
 
     hits = 0
 
-    for predicted_label, prediction, label in zip(predicted, predictions, labels):
+    for predicted_label, prediction, label in zip(predicted_labels, predictions, labels):
         probability = np.max(prediction) * 100
         print(
             "{} with {:.2f}% probability (real class: {})".format(
@@ -41,8 +41,8 @@ def predict_and_evaluate():
 
         hits = hits + 1 if label == predicted_label else hits
 
-    acc = (hits / len(labels)) * 100
-    return acc, predicted
+    accuracy = (hits / len(labels)) * 100
+    return accuracy, predicted_labels
 
 
 images = list()
@@ -61,7 +61,7 @@ for class_name in class_names:
         images.append(image_array)
         labels.append(class_names.index(class_name))
 
-accuracy, predicted_labels = predict_and_evaluate()
+accuracy, predicted_labels = predict_and_evaluate(images, labels, class_names)
 print("Accuracy is {:.2f}%".format(accuracy))
 
 evaluation = model.evaluate(
