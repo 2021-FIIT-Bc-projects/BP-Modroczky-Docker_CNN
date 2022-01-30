@@ -13,6 +13,7 @@
       <excludeFolder url="file://$MODULE_DIR$/dataset_edible_poisonous" />
       <excludeFolder url="file://$MODULE_DIR$/dataset_mix" />
       <excludeFolder url="file://$MODULE_DIR$/dataset_small" />
+      <excludeFolder url="file://$MODULE_DIR$/fungi_classifier/uploaded_images" />
       <excludeFolder url="file://$MODULE_DIR$/models" />
       <excludeFolder url="file://$MODULE_DIR$/plots" />
       <excludeFolder url="file://$MODULE_DIR$/saved_model" />

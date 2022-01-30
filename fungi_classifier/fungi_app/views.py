@@ -3,12 +3,15 @@ from rest_framework.views import APIView
 from django.http import HttpResponse, JsonResponse
 from tensorflow.keras.utils import img_to_array, load_img
 from .apps import FungiAppConfig
+from .forms import UploadFileForm
 import numpy as np
 import os
 from fungi_classifier import settings
+import json
 
-def classify_image(class_names, model):
-	image_path = os.path.join(settings.test_data_path, 'amanita/ALP2010PIC55950385.jpg') # will use a variable image name
+
+def classify_image(class_names, model, image_path):
+	image_path = os.path.join(image_path)
 	image_data = load_img(
 		image_path,
 		target_size=(settings.img_height, settings.img_width),
@@ -17,16 +20,32 @@ def classify_image(class_names, model):
 	image = img_to_array(image_data).reshape((1, settings.img_height, settings.img_width, 3))
 	return model.predict(image).flatten()
 
-class call_model(APIView):
-	def get(self, request):
-		if request.method == 'GET':
-			parameter = request.GET.get('sentence')
-			each_class_probability = classify_image(settings.class_names, FungiAppConfig.model)
 
-			final_label = np.argmax(each_class_probability, axis=0)
-			final_probability = np.max(each_class_probability) * 100
+def get_class(tmp):
+	image_path = tmp
+	each_class_probability = classify_image(settings.class_names, FungiAppConfig.model, image_path)
 
-			response = {'all': {settings.class_names[i]: float(each_class_probability[i]) for i in range(len(settings.class_names))}}
-			response['final'] = {settings.class_names[final_label]: final_probability}
+	final_label = np.argmax(each_class_probability, axis=0)
+	final_probability = np.max(each_class_probability) * 100
 
-			return JsonResponse(response)
+	response = {'all': {settings.class_names[i]: float(each_class_probability[i]) for i in range(len(settings.class_names))}}
+	response['final'] = {settings.class_names[final_label]: final_probability}
+
+	return response
+
+
+def save_file(file):
+	with open(settings.uploaded_img_path + '/tmp', 'wb+') as destination:
+		for chunk in file.chunks():
+			destination.write(chunk)
+
+
+def upload_file(request):
+	if request.method == 'POST':
+		form = UploadFileForm(request.POST, request.FILES)
+		if form.is_valid():
+			save_file(request.FILES['file'])
+			return render(request, 'result.html', {'data': get_class(settings.uploaded_img_path + '/tmp')})
+	else:
+		form = UploadFileForm()
+	return render(request, 'classifier_gui.html', {'form': form})

@@ -20,5 +20,5 @@ from fungi_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('classify/', views.call_model.as_view())
+    path('classify/', views.upload_file)
 ]

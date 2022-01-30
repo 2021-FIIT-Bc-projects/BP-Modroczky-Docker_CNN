@@ -2,6 +2,7 @@
 data
 models
 plots
+fungi_classifier/uploaded_images
 
 # Cache files
 src/__pycache__/

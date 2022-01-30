@@ -37,6 +37,7 @@ img_width = 224
 
 class_names = ['amanita', 'boletus', 'cantharellus', 'morchella']
 test_data_path = '../data/dataset_augmented/test'
+uploaded_img_path = 'uploaded_images'
 
 # Application definition
 
@@ -65,7 +66,7 @@ ROOT_URLCONF = 'fungi_classifier.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['fungi_classifier/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
