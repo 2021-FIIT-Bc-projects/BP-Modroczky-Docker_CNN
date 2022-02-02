@@ -1,4 +1,7 @@
 from django import forms
+from .models import Image
 
-class UploadFileForm(forms.Form):
-	file = forms.FileField(label='Select a file')
+class UploadFileForm(forms.ModelForm):
+	class Meta: 
+		model = Image
+		fields = '__all__'

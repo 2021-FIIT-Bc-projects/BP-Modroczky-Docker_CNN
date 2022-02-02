@@ -32,12 +32,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Classifier data
-img_height = 224
-img_width = 224
+IMG_SIZE = 224
 
-class_names = ['amanita', 'boletus', 'cantharellus', 'morchella']
-test_data_path = '../data/dataset_augmented/test'
-uploaded_img_path = 'uploaded_images'
+CLASS_NAMES = ['amanita', 'boletus', 'cantharellus', 'morchella']
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Application definition
 
