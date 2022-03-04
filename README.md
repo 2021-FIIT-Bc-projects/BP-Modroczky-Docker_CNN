@@ -17,8 +17,83 @@ Images alebo z iných verejne dostupných zdrojov. Ako praktickú ukážku vybud
 prostredia, vytvorte docker kontajner s aplikáciou pre dátovú vedu. Z vytrénovaného modelu realizujte flask
 aplikáciu na vizualizáciu. Vyhodnoťte výsledný softvérový produkt vrátane kvality vytvoreného modelu.
 
+### Skripty
+
+#### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
+
+```text
+python obtain.py <path/to/json/file>
+```
+
+Príklad metadát v json súbore pre skript obtain.py:
+
+```json
+{
+    "tsv_path": "path/to/mushroom/observer/tsv/file",
+    "dl_path": "path/to/download/folder",
+    "authors_path": "path/to/save/author/names",
+    "queries": [
+        "amanita",
+        "boletus",
+        "cantharellus",
+        "morchella",
+        "macrolepiota",
+        "craterellus",
+        "pleurotus",
+        "psilocybe"
+    ],
+    "limit": 3000
+}
+```
+
+`tsv_path` je umiestnenie súboru [tsv](https://drive.google.com/file/d/1fPXJtJpqiQEQb1ezINdFK-Jhee84DvMA/view?usp=sharing), ktorý obsahuje zoznam obrázkov húb z Mushroom Observer.
+
+`dl_path` je priečinok, do ktorého sa majú obrázky sťahovať.
+
+`authors_path` je priečinok, do ktorého sa má uložiť textový súbor s menami autorov obrázkov.
+
+`queries` je zoznam názvov húb, ktoré sa majú stiahnuť.
+
+`limit` je maximálny počet obrázkov, ktorý sa má stiahnuť pre jeden typ huby.
+
+#### Skript pre rozšírenie trénovacieho datasetu
+
+```text
+python augment.py <path/to/json/file>
+```
+
+Príklad metadát v json súbore pre skript augment.py:
+
+```json
+{
+    "img_size": 299,
+    "classes": {
+        "amanita": 58,
+        "boletus": 48,
+        "cantharellus": 49,
+        "morchella": 46,
+        "macrolepiota": 97,
+        "craterellus": 55,
+        "pleurotus": 34,
+        "psilocybe": 80
+    },
+    "data_path": "path/to/dataset/to/be/augmented",
+    "augmented_data_path": "path/to/store/augmented/dataset"
+}
+```
+
+`img_size` je veľkosť výstupných obrázkov.
+
+`classes` je zoznam tried pre klasifikáciu spolu s číslom, ktoré hovorí, koľkokrát sa má každý obrázok v danej triede rozšíriť.
+
+`data_path` je umiestnenie trénovacieho ($data_path/train) a testovacieho datasetu ($data_path/test).
+
+`augmented_data_path` je nové umiestnenie testovacieho datasetu ($augmented_data_path/test) a rozšíreného trénovacieho datasetu ($augmented_data_path/train).
+
+``
+
 ### Experiment 1 - VGG16
 
-Python Notebook [vgg16.ipynb](src/vgg16.ipynb) bol spúšťaný na platforme Kaggle a je získaný z odkazu https://www.kaggle.com/viktormodroczky/vgg16-for-fungi-classification/notebook.
+Python Notebook [vgg16.ipynb](src/vgg16.ipynb) bol spúšťaný na platforme Kaggle a je získaný z odkazu <https://www.kaggle.com/viktormodroczky/vgg16-for-fungi-classification/notebook>.
 
 ### Experiment 2
