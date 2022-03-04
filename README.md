@@ -90,10 +90,15 @@ Príklad metadát v json súbore pre skript augment.py:
 
 `augmented_data_path` je nové umiestnenie testovacieho datasetu ($augmented_data_path/test) a rozšíreného trénovacieho datasetu ($augmented_data_path/train).
 
-``
-
 ### Experiment 1 - VGG16
 
 Python Notebook [vgg16.ipynb](src/vgg16.ipynb) bol spúšťaný na platforme Kaggle a je získaný z odkazu <https://www.kaggle.com/viktormodroczky/vgg16-for-fungi-classification/notebook>.
+
+<details>
+<summary><b>Vybudovaný model VGG16 pomocou Keras</b></summary>
+
+![VGG16](plots/vgg16_plot.png)
+
+</details>
 
 ### Experiment 2
