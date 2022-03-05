@@ -1,0 +1,13 @@
+{
+  "id": "viktormodroczky/vgg16-for-fungi-classification",
+  "title": "VGG16 for Fungi Classification",
+  "code_file": "vgg16.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "false",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}
