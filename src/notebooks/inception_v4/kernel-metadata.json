@@ -1,0 +1,13 @@
+{
+  "id": "viktormodroczky/inception-v4-for-fungi-classification",
+  "title": "Inception-v4 for Fungi Classification",
+  "code_file": "inception_v4.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "false",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}
