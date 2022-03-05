@@ -19,6 +19,12 @@ aplikáciu na vizualizáciu. Vyhodnoťte výsledný softvérový produkt vrátan
 
 ### Skripty
 
+Pred spúšťaním skriptov treba nainštalovať potrebné knižnice.
+
+```text
+python -m pip install -r requirements.txt
+```
+
 #### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
 
 ```text
