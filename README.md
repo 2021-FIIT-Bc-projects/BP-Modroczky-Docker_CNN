@@ -94,9 +94,9 @@ Príklad metadát v json súbore pre skript augment.py:
             "pleurotus": 6,
             "psilocybe": 7
         }
-  },
-  "data_path": "../../data/dataset",
-  "augmented_data_path": "../../data/dataset_augmented_inception"
+    },
+    "data_path": "path/to/dataset/to/be/augmented",
+    "augmented_data_path": "path/to/store/augmented/dataset"
 }
 ```
 
