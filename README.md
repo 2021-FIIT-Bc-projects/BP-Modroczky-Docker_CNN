@@ -74,27 +74,39 @@ Príklad metadát v json súbore pre skript augment.py:
 {
     "img_size": 299,
     "classes": {
-        "amanita": 58,
-        "boletus": 48,
-        "cantharellus": 49,
-        "morchella": 46,
-        "macrolepiota": 97,
-        "craterellus": 55,
-        "pleurotus": 34,
-        "psilocybe": 80
-    },
-    "data_path": "path/to/dataset/to/be/augmented",
-    "augmented_data_path": "path/to/store/augmented/dataset"
+        "train": {
+            "amanita": 58,
+            "boletus": 48,
+            "cantharellus": 49,
+            "morchella": 46,
+            "macrolepiota": 97,
+            "craterellus": 55,
+            "pleurotus": 34,
+            "psilocybe": 80
+        },
+        "test": {
+            "amanita": 6,
+            "boletus": 8,
+            "cantharellus": 7,
+            "morchella": 7,
+            "macrolepiota": 8,
+            "craterellus": 7,
+            "pleurotus": 6,
+            "psilocybe": 7
+        }
+  },
+  "data_path": "../../data/dataset",
+  "augmented_data_path": "../../data/dataset_augmented_inception"
 }
 ```
 
 `img_size` je veľkosť výstupných obrázkov.
 
-`classes` je zoznam tried pre klasifikáciu spolu s číslom, ktoré hovorí, koľkokrát sa má každý obrázok v danej triede rozšíriť.
+`classes` je zoznam tried v trénovacom a testovacom priečinku pre klasifikáciu spolu s číslom, ktoré hovorí, koľkokrát sa má každý obrázok v danej triede rozšíriť. Ak sa uvedie iba zoznam pre trénovací alebo testovací dataset, tak rozširovanie prebehne len pre uvedený dataset.
 
 `data_path` je umiestnenie trénovacieho ($data_path/train) a testovacieho datasetu ($data_path/test).
 
-`augmented_data_path` je nové umiestnenie testovacieho datasetu ($augmented_data_path/test) a rozšíreného trénovacieho datasetu ($augmented_data_path/train).
+`augmented_data_path` je nové umiestnenie rozšíreného testovacieho datasetu ($augmented_data_path/test) a trénovacieho datasetu ($augmented_data_path/train).
 
 ### Experiment 1 - VGG16
 
