@@ -1,7 +1,7 @@
 {
-  "id": "viktormodroczky/inception-v4-for-fungi-classification",
-  "title": "Inception-v4 for Fungi Classification",
-  "code_file": "inception_v4.ipynb",
+  "id": "viktormodroczky/inception-v3-for-fungi-classification",
+  "title": "Inception-v3 for Fungi Classification",
+  "code_file": "inception_v3.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": "false",
