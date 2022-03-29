@@ -8,14 +8,22 @@
     <title>Classifier</title>
 </head>
 <body>
-    <div class="content">
+    <style>
+        .absolute-center{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <div class="content absolute-center">
+        {% block classification_result %}{% endblock %}
         <div>
             <form method="post" enctype="multipart/form-data">
                 <input type = "file" name = "file" />
                 <button type="submit" value="submit">Submit</button>
             </form>
         </div>
-        {% block classification_result %}{% endblock %}
     </div>
 </body>
 </html>

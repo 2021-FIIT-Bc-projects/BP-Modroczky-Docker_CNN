@@ -1,34 +1,35 @@
 {% extends "base.html" %}
 
 {% block classification_result %}
+{% if data %}
+<style>
+    .horizontal-element {
+        display: inline-block;
+    }
+</style>
+
 <div>
-    {% if data %}
+    <div class="horizontal-element">
+        <img
+            src="{{url_for('static', filename='media/tmp')}}"
+            width="256"
+            height="auto"
+            alt="Mushroom Image"
+        />
+    </div>
+    <div class="horizontal-element">
+        <br/><b>Using model {{data.model}}</b><br/>
         <br/>
-        <div>
-            <b>Using model {{data.model}}</b> <br/>
-            <br/>
-        </div>
-        <div>
-            {% for k,v in data.result.all.items() %}
-                <b>{{k}}</b>: {{v}} <br/>
-            {% endfor %}
-            <br/>
-        </div>
-        <div>
-            This image belongs to
-            {% for k,v in data.result.final.items() %}
-                <b>{{k}}</b> with {{v}}% confidence. <br/>
-            {% endfor %}
-            <br/>
-        </div>
-        <div>
-            <img
-                src="{{url_for('static', filename='media/tmp')}}"
-                width="500"
-                height="auto"
-                alt="Mushroom Image"
-            />
-        </div>
-    {% endif %}
+        {% for k,v in data.result.all.items() %}
+            <b>{{k}}</b>: {{v}} <br/>
+        {% endfor %}
+        <br/>
+        This image belongs to
+        {% for k,v in data.result.final.items() %}
+            <b>{{k}}</b> with {{v}}% confidence. <br/>
+        {% endfor %}
+        <br/>
+    </div>
 </div>
+{% endif %}
 {% endblock %}
