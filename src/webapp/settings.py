@@ -19,7 +19,7 @@ models = {
             'craterellus',
             'macrolepiota',
             'morchella',
-            'pleurotus'
+            'pleurotus',
             'psilocybe'
         ]
     }
