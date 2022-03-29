@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--favicon from https://www.pngrepo.com/svg/276142/mushroom-->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Classifier</title>
+</head>
+<body>
+    <div class="content">
+        <div>
+            <form method="post" enctype="multipart/form-data">
+                <input type = "file" name = "file" />
+                <button type="submit" value="submit">Submit</button>
+            </form>
+        </div>
+        {% block classification_result %}{% endblock %}
+    </div>
+</body>
+</html>
