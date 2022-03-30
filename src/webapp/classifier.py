@@ -6,27 +6,24 @@ import settings
 from pathlib import Path
 
 app = Flask(__name__)
+model_vgg16 = load_model(Path(settings.models_path, settings.models['vgg16']['filename']))
+model_inception_v3 = load_model(Path(settings.models_path, settings.models['inception_v3']['filename']))
 
 @app.route('/')
 def hello():
-    return 'use /vgg16 or /inception-v3'
+    return render_template('index.html')
 
 
 @app.route('/vgg16', methods=['GET', 'POST'])
 def vgg16():
     if request.method == 'POST':
-        model = load_model(Path(settings.models_path, settings.models['vgg16']['filename']))
-        request.files['file'].save(Path(settings.media_root, 'tmp'))
-        prediction = get_class(
-            Path(settings.media_root, 'tmp').as_posix(), 
-            model, 
-            settings.models['vgg16']['class_names'],
-            settings.models['vgg16']['img_size']
-        )
         return render_template(
             'classifier.html',
             name="Classifier",
-            data={"result": prediction, "model": "VGG16"}
+            data={
+                "result": run('vgg16', model_vgg16),
+                "model": "VGG16"
+            }
         )
     
     return render_template('classifier.html', name="Classifier", data=None)
@@ -35,43 +32,49 @@ def vgg16():
 @app.route('/inception-v3', methods=['GET', 'POST'])
 def inception_v3():
     if request.method == 'POST':
-        model = load_model(Path(settings.models_path, settings.models['inception_v3']['filename']))
-        request.files['file'].save(Path(settings.media_root, 'tmp'))
-        prediction = get_class(
-            Path(settings.media_root, 'tmp').as_posix(),
-            model,
-            settings.models['inception_v3']['class_names'],
-            settings.models['inception_v3']['img_size']
-        )
         return render_template(
             'classifier.html',
             name="Classifier",
-            data={"result": prediction, "model": "Inception-v3"}
+            data={
+                "result": run('inception_v3', model_inception_v3),
+                "model": "Inception-v3"
+            }
         )
     
     return render_template('classifier.html', name="Classifier", data=None)
 
 
-def classify_image(model, image_path, img_size):
-	image_data = load_img(
-		image_path,
-		target_size=(img_size, img_size),
-		color_mode='rgb'
-	)
-	image = img_to_array(image_data).reshape((1, img_size, img_size, 3))
-	return model.predict(image).flatten()
+def run(model_name, model):
+    request.files['file'].save(Path(settings.media_root, 'tmp'))
+    prediction = classify(
+        Path(settings.media_root, 'tmp').as_posix(),
+        model,
+        settings.models[model_name]['class_names'],
+        settings.models[model_name]['img_size']
+    )
+    return prediction
 
 
-def get_class(image_path, model, class_names, img_size):
-	each_class_probability = classify_image(model, image_path, img_size)
+def classify(image_path, model, class_names, img_size):
+    image_data = load_img(image_path, target_size=(img_size, img_size), color_mode='rgb')
+    image = img_to_array(image_data).reshape((1, img_size, img_size, 3))
+    each_class_probability = model.predict(image).flatten()
 
-	final_label = np.argmax(each_class_probability, axis=0)
-	final_probability = np.max(each_class_probability) * 100
+    final_label = np.argmax(each_class_probability, axis=0)
+    final_probability = np.max(each_class_probability) * 100
 
-	response = {'all': {class_names[i]: float(each_class_probability[i] * 100) for i in range(len(class_names))}}
-	response['final'] = {class_names[final_label]: final_probability}
+    response = {
+        'all': {
+                class_names[i]: 
+                    float(each_class_probability[i] * 100) 
+                    for i in range(len(class_names))
+            }
+        }
+    response['final'] = {
+        class_names[final_label]: final_probability
+    }
 
-	return response
+    return response
 
 
 def save_file(file, media_root):

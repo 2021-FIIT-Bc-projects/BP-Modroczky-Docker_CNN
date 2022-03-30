@@ -1,35 +1,85 @@
 {% extends "base.html" %}
 
-{% block classification_result %}
-{% if data %}
-<style>
-    .horizontal-element {
-        display: inline-block;
-    }
-</style>
-
-<div>
-    <div class="horizontal-element">
-        <img
-            src="{{url_for('static', filename='media/tmp')}}"
-            width="256"
-            height="auto"
-            alt="Mushroom Image"
-        />
-    </div>
-    <div class="horizontal-element">
-        <br/><b>Using model {{data.model}}</b><br/>
-        <br/>
-        {% for k,v in data.result.all.items() %}
-            <b>{{k}}</b>: {{v}} <br/>
-        {% endfor %}
-        <br/>
-        This image belongs to
-        {% for k,v in data.result.final.items() %}
-            <b>{{k}}</b> with {{v}}% confidence. <br/>
-        {% endfor %}
-        <br/>
+{% block content %}
+<div class="container">
+    <div class="row valign-wrapper">
+        <div class="col s4 center-align">
+            <img
+                id="imgPreview"
+                class="responsive-img"
+                src="#"
+                alt="Preview"
+                width="256"
+                height="auto"
+            />
+            <h6>
+                Choose an image to classify
+            </h6>
+            <form method="post" enctype="multipart/form-data">
+                <input
+                    id="fileID"
+                    required
+                    type="file"
+                    name="file"
+                    accept="image/png, image/jpeg"
+                    style="display: none;"
+                />
+                <label
+                    class="waves-effect waves-light btn white black-text"
+                    for="fileID"
+                >
+                    Browse...
+                </label>
+                <button
+                    class="waves-effect waves-light btn white black-text"
+                    type="submit"
+                    value="submit"
+                >
+                    Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+        {% if data %}
+        <div class="col s8 card white">
+            <div class="card-content">
+                <div class="row valign-wrapper">
+                    <div class="col s6">
+                        <img
+                            class="const-img responsive-img"
+                            src="{{ url_for('static', filename='media/tmp') }}"
+                            alt="Mushroom Image"
+                        />
+                    </div>
+                    <div class="col s6">
+                        <span class="card-title">Using model {{ data.model }}</span>
+                        {% for k,v in data.result.all.items() %}
+                        <b>{{k}}</b>: {{v}} <br/>
+                        {% endfor %}
+                        <br/>
+                        This image belongs to
+                        {% for k,v in data.result.final.items() %}
+                        <b>{{k}}</b> with {{v}}% confidence. <br/>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col s8 small card white">
+            <div class="card-content center-align">
+                <span class="card-title">Results will appear here</span>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
-{% endif %}
+<script>
+    fileID.onchange = evt => {
+        const [file] = fileID.files
+        if (file) {
+            imgPreview.src = URL.createObjectURL(file)
+        }
+    }
+</script>
 {% endblock %}
