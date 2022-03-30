@@ -56,13 +56,14 @@
                     </div>
                     <div class="col s6">
                         <span class="card-title">Using model {{ data.model }}</span>
+                        <br/>
                         {% for k,v in data.result.all.items() %}
-                        <b>{{k}}</b>: {{v}} <br/>
+                        <b>{{k}}</b>: {{v}}% <br/>
                         {% endfor %}
                         <br/>
-                        This image belongs to
+                        Chosen
                         {% for k,v in data.result.final.items() %}
-                        <b>{{k}}</b> with {{v}}% confidence. <br/>
+                        <b>{{k}}</b> with {{v}}% confidence.
                         {% endfor %}
                     </div>
                 </div>

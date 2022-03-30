@@ -61,12 +61,12 @@ def classify(image_path, model, class_names, img_size):
     each_class_probability = model.predict(image).flatten()
 
     final_label = np.argmax(each_class_probability, axis=0)
-    final_probability = np.max(each_class_probability) * 100
+    final_probability = round(np.max(each_class_probability) * 100, 2)
 
     response = {
         'all': {
                 class_names[i]: 
-                    float(each_class_probability[i] * 100) 
+                    round(each_class_probability[i] * 100, 2)
                     for i in range(len(class_names))
             }
         }
