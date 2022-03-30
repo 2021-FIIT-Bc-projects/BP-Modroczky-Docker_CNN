@@ -57,9 +57,22 @@
                     <div class="col s6">
                         <span class="card-title">Using model {{ data.model }}</span>
                         <br/>
-                        {% for k,v in data.result.all.items() %}
-                        <b>{{k}}</b>: {{v}}% <br/>
-                        {% endfor %}
+                        <table class="responsive-table highlight">
+                            <thead>
+                                <tr>
+                                    <th>Class</th>
+                                    <th>Probability</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for k,v in data.result.all.items() %}
+                            <tr>
+                                <td>{{ k }}</td>
+                                <td>{{ v }}%</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                         <br/>
                         Chosen
                         {% for k,v in data.result.final.items() %}
@@ -78,6 +91,11 @@
         {% endif %}
     </div>
 </div>
+<style>
+    td {
+        padding: 8px;
+    }
+</style>
 <script>
     fileID.onchange = evt => {
         const [file] = fileID.files
