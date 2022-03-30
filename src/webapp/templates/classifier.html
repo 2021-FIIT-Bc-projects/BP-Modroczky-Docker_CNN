@@ -4,13 +4,16 @@
 <div class="container">
     <div class="row valign-wrapper">
         <div class="col s4 center-align">
+            <!-- Image placeholder from https://www.pngrepo.com/svg/293440/add-image-frame -->
             <img
                 id="imgPreview"
                 class="responsive-img"
                 src="#"
-                alt="Preview"
                 width="256"
                 height="auto"
+                onerror="this.src='static/add-image-frame-pngrepo-com.png'"
+                onclick="document.getElementById('fileID').click();"
+                style="cursor: pointer;"
             />
             <h6>
                 Choose an image to classify
