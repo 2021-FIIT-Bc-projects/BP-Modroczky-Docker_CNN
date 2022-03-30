@@ -24,8 +24,21 @@
 <body>
     <header>
         <nav>
-            <div class="nav-wrapper">
-                <a href="{{ url_for('hello') }}" class="brand-logo">Fungi Recognition</a>
+            <div class="nav-wrapper blue lighten-1">
+                <a
+                    href="{{ url_for('hello') }}"
+                    class="brand-logo"
+                    style="padding-left: 16px"
+                >
+                    <i class="valign-wrapper">
+                        <!-- favicon from https://www.pngrepo.com/svg/276142/mushroom -->
+                        <img
+                            src="{{ url_for('static', filename='favicon.ico') }}"
+                            alt="Mushroom Logo Icon"
+                        >
+                    </i>
+                    Fungi Recognition
+                </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
                         <a 
@@ -61,7 +74,7 @@
     <main class="valign-wrapper">
         {% block content %}{% endblock %}
     </main>
-    <footer class="page-footer">
+    <footer class="page-footer blue lighten-1">
         <div class="row">
             <div class="col s12 center-align">
                 © 2022 Viktor Modroczký
