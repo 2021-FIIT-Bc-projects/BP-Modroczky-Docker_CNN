@@ -22,7 +22,8 @@ def vgg16():
             name="Classifier",
             data={
                 "result": run('vgg16', model_vgg16),
-                "model": "VGG16"
+                "model": "VGG16",
+                "edibility": settings.edibility
             }
         )
     
@@ -37,7 +38,8 @@ def inception_v3():
             name="Classifier",
             data={
                 "result": run('inception_v3', model_inception_v3),
-                "model": "Inception-v3"
+                "model": "Inception-v3",
+                "edibility": settings.edibility
             }
         )
     
@@ -70,9 +72,8 @@ def classify(image_path, model, class_names, img_size):
                     for i in range(len(class_names))
             }
         }
-    response['final'] = {
-        class_names[final_label]: final_probability
-    }
+    response['final_class'] = class_names[final_label]
+    response['final_probability'] = final_probability
 
     return response
 

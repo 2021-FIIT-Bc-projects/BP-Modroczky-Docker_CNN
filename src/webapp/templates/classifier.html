@@ -62,22 +62,42 @@
                                 <tr>
                                     <th>Class</th>
                                     <th>Probability</th>
+                                    <th>
+                                        Edible
+                                        <sup
+                                            style="cursor: help;"
+                                            data-html="true"
+                                            class="tooltipped"
+                                            data-position="right"
+                                            data-tooltip="False means the mushroom is<br/>poisonous or has bad effect<br/>on the human body."
+                                        >
+                                            Note
+                                        </sup>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
                             {% for k,v in data.result.all.items() %}
                             <tr>
+                                {% if data.result.final_class == k %}
+                                <td><b>{{ k }}</b></td>
+                                <td><b>{{ v }}%</b></td>
+                                <td><b>{{ data['edibility'][k] }}</b></td>
+                                {% else %}
                                 <td>{{ k }}</td>
                                 <td>{{ v }}%</td>
+                                <td>{{ data['edibility'][k] }}</td>
+                                {% endif %}
                             </tr>
                             {% endfor %}
                             </tbody>
                         </table>
                         <br/>
-                        Chosen
-                        {% for k,v in data.result.final.items() %}
-                        <b>{{k}}</b> with {{v}}% confidence.
-                        {% endfor %}
+                        Chosen <b>{{ 
+                            data['result']['final_class'] 
+                        }}</b> with {{ 
+                            data['result']['final_probability'] 
+                        }}% confidence.
                     </div>
                 </div>
             </div>
@@ -103,5 +123,10 @@
             imgPreview.src = URL.createObjectURL(file)
         }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const hint = document.querySelectorAll('.tooltipped');
+        M.Tooltip.init(hint, {});
+    });
 </script>
 {% endblock %}

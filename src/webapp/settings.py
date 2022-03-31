@@ -25,6 +25,17 @@ models = {
     }
 }
 
+edibility = {
+    "amanita": False,
+    "boletus": True,
+    "cantharellus": True,
+    "craterellus": True,
+    "macrolepiota": True,
+    "morchella": True,
+    "pleurotus": True,
+    "psilocybe": False
+}
+
 media_root = "static/media"
 
 models_path = "../../models"
