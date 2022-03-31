@@ -1,5 +1,5 @@
 models = {
-    "vgg16": {
+    "VGG16": {
         "filename": "vgg16.h5",
         "img_size": 224,
         "class_names": [
@@ -9,7 +9,7 @@ models = {
             'morchella'
         ]
     },
-    "inception_v3": {
+    "Inception-v3": {
         "filename": "inception_v3.h5",
         "img_size": 299,
         "class_names": [

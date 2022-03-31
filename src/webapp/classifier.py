@@ -6,44 +6,42 @@ import settings
 from pathlib import Path
 
 app = Flask(__name__)
-model_vgg16 = load_model(Path(settings.models_path, settings.models['vgg16']['filename']))
-model_inception_v3 = load_model(Path(settings.models_path, settings.models['inception_v3']['filename']))
+model_vgg16 = load_model(Path(settings.models_path, settings.models['VGG16']['filename']))
+model_inception_v3 = load_model(Path(settings.models_path, settings.models['Inception-v3']['filename']))
 
 @app.route('/')
 def hello():
-    return render_template('index.html')
+    return render_template('index.html', name='Models')
 
 
 @app.route('/vgg16', methods=['GET', 'POST'])
 def vgg16():
+    name = 'VGG16'
     if request.method == 'POST':
         return render_template(
             'classifier.html',
-            name="Classifier",
+            name=name,
             data={
-                "result": run('vgg16', model_vgg16),
-                "model": "VGG16",
+                "result": run(name, model_vgg16),
                 "edibility": settings.edibility
             }
         )
-    
-    return render_template('classifier.html', name="Classifier", data=None)
+    return render_template('classifier.html', name=name, data=None)
 
 
 @app.route('/inception-v3', methods=['GET', 'POST'])
 def inception_v3():
+    name = 'Inception-v3'
     if request.method == 'POST':
         return render_template(
             'classifier.html',
-            name="Classifier",
+            name=name,
             data={
-                "result": run('inception_v3', model_inception_v3),
-                "model": "Inception-v3",
+                "result": run(name, model_inception_v3),
                 "edibility": settings.edibility
             }
         )
-    
-    return render_template('classifier.html', name="Classifier", data=None)
+    return render_template('classifier.html', name=name, data=None)
 
 
 def run(model_name, model):
