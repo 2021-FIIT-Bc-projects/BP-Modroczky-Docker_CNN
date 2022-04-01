@@ -39,5 +39,3 @@ edibility = {
 media_root = "static/media"
 
 models_path = "../../models"
-
-allowed_extension = { 'png', 'jpg', 'jpeg' }
