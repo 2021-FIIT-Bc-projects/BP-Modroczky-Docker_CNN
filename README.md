@@ -32,6 +32,16 @@ aplikáciu na vizualizáciu. Vyhodnoťte výsledný softvérový produkt vrátan
 ![Keras](https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
 
+### Datasety
+
+Dataset pre trénovanie a testovanie modelu VGG16 je dostupný na [odkaze](https://drive.google.com/drive/folders/1i9dmyGbAPThS8vpjOmS-O0nVpHewVlCs?usp=sharing).\
+Dataset pre trénovanie a testovanie modelu VGG16 je dostupný na [odkaze](https://drive.google.com/drive/folders/1f8j69UsWv_Csc3vQJ0AdOL05mYAiv-t2?usp=sharing).\
+
+**Zdroje**\
+
+- [FGVCx Fungi Classification Challenge](https://github.com/visipedia/fgvcx_fungi_comp#data)\
+- [Mushroom Observer](https://mushroomobserver.org/articles/20)
+
 ### Skripty
 
 Pred spúšťaním skriptov treba nainštalovať potrebné knižnice.
@@ -46,7 +56,7 @@ python -m pip install -r requirements.txt
 python obtain.py <path/to/json/file>
 ```
 
-Príklad metadát v json súbore pre skript obtain.py:
+Príklad metadát v json súbore pre skript [obtain.py](./src/scripts/obtain.py):
 
 ```json
 {
@@ -79,7 +89,7 @@ Príklad metadát v json súbore pre skript obtain.py:
 python augment.py <path/to/json/file>
 ```
 
-Príklad metadát v json súbore pre skript augment.py:
+Príklad metadát v json súbore pre skript [augment.py](./src/scripts/augment.py):
 
 ```json
 {
@@ -118,7 +128,7 @@ Príklad metadát v json súbore pre skript augment.py:
 
 ### Experiment 1 s modelom VGG16
 
-[Notebook](src/notebooks/vgg16.ipynb) na trénovanie a testovanie modelu VGG16 bol spúšťaný na platforme [Kaggle](https://www.kaggle.com/viktormodroczky/vgg16-for-fungi-classification/notebook).
+Notebook [vgg16.ipynb](src/notebooks/vgg16.ipynb) na trénovanie a testovanie modelu VGG16 bol spúšťaný na platforme [Kaggle](https://www.kaggle.com/viktormodroczky/vgg16-for-fungi-classification/notebook).
 
 <details>
 <summary><b>Vybudovaný model VGG16 pomocou Keras</b></summary>
@@ -129,4 +139,6 @@ Príklad metadát v json súbore pre skript augment.py:
 
 ### Experiment 2 s modelom Inception-v3 a preneseným učením
 
-[Notebook](src/notebooks/inception_v3.ipynb) na trénovanie a testovanie modelu Inception-v3 bol spúšťaný na platforme [Kaggle](https://www.kaggle.com/viktormodroczky/inception-v3-for-fungi-classification/notebook).
+Notebook [inception_v3.ipynb](src/notebooks/inception_v3.ipynb) na trénovanie a testovanie modelu Inception-v3 bol spúšťaný na platforme [Kaggle](https://www.kaggle.com/viktormodroczky/inception-v3-for-fungi-classification/notebook).
+
+### Webová aplikácia
