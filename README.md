@@ -40,7 +40,7 @@ aplikáciu na vizualizáciu. Vyhodnoťte výsledný softvérový produkt vrátan
 ### Datasety
 
 Dataset pre trénovanie a testovanie modelu VGG16 je dostupný na [odkaze](https://drive.google.com/drive/folders/1i9dmyGbAPThS8vpjOmS-O0nVpHewVlCs?usp=sharing).\
-Dataset pre trénovanie a testovanie modelu VGG16 je dostupný na [odkaze](https://drive.google.com/drive/folders/1f8j69UsWv_Csc3vQJ0AdOL05mYAiv-t2?usp=sharing).
+Dataset pre trénovanie a testovanie modelu Inception-v3 je dostupný na [odkaze](https://drive.google.com/drive/folders/1f8j69UsWv_Csc3vQJ0AdOL05mYAiv-t2?usp=sharing).
 
 #### Zdroje
 
@@ -147,3 +147,29 @@ Notebook [vgg16.ipynb](src/notebooks/vgg16.ipynb) na trénovanie a testovanie mo
 Notebook [inception_v3.ipynb](src/notebooks/inception_v3.ipynb) na trénovanie a testovanie modelu Inception-v3 bol spúšťaný na platforme [Kaggle](https://www.kaggle.com/viktormodroczky/inception-v3-for-fungi-classification/notebook).
 
 ### Webová aplikácia
+
+#### Návrh používateľského rozhrania
+
+<details>
+<summary><b>Zobraziť návrh</b></summary>
+
+![IndexDesign](./gui/design/index.png)
+
+![PredictionDesign](./gui/design/pred.png)
+
+</details>
+
+#### Finálne používateľské rozhranie
+
+<details>
+<summary><b>Zobraziť finálne rozhranie</b></summary>
+
+![IndexFinal](./gui/final/index.png)
+
+![BeforeOpen](./gui/final/before_open.png)
+
+![AfterOpen](./gui/final/after_open.png)
+
+![AfterClassification](./gui/final/after_classification.png)
+
+</details>
