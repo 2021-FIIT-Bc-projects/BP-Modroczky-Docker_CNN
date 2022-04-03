@@ -44,7 +44,7 @@ Dataset pre trénovanie a testovanie modelu Inception-v3 je dostupný na [odkaze
 
 #### Zdroje
 
-- [FGVCx Fungi Classification Challenge](https://github.com/visipedia/fgvcx_fungi_comp#data)\
+- [FGVCx Fungi Classification Challenge](https://github.com/visipedia/fgvcx_fungi_comp#data)
 - [Mushroom Observer](https://mushroomobserver.org/articles/20)
 
 ### Skripty
@@ -173,3 +173,23 @@ Notebook [inception_v3.ipynb](src/notebooks/inception_v3.ipynb) na trénovanie a
 ![AfterClassification](./gui/final/after_classification.png)
 
 </details>
+
+#### Endpointy
+
+##### Endpoint pre hlavnú stránku
+
+```http
+host/
+```
+
+##### Endpoint pre VGG16 model
+
+```http
+host/vgg16
+```
+
+##### Endpoint pre Inception-v3 model
+
+```http
+host/inception-v3
+```
