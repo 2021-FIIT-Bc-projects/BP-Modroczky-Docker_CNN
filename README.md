@@ -153,24 +153,26 @@ Notebook [inception_v3.ipynb](src/notebooks/inception_v3.ipynb) na trénovanie a
 <details>
 <summary><b>Zobraziť návrh</b></summary>
 
-![IndexDesign](./gui/design/index.png)
+![IndexDesign](./images/gui/design/index.png)
 
-![PredictionDesign](./gui/design/pred.png)
+![PredictionDesign](./images/gui/design/pred.png)
 
 </details>
 
 #### Finálne používateľské rozhranie
 
+Používateľské rozhranie je implementované pomocou CSS rámca [Materialize](https://materializecss.com/) <a href="https://materializecss.com/"><img src="./images/MaterializeLogo-3.svg" height="16"></a>.
+
 <details>
 <summary><b>Zobraziť finálne rozhranie</b></summary>
 
-![IndexFinal](./gui/final/index.png)
+![IndexFinal](./images/gui/final/index.png)
 
-![BeforeOpen](./gui/final/before_open.png)
+![BeforeOpen](./images/gui/final/before_open.png)
 
-![AfterOpen](./gui/final/after_open.png)
+![AfterOpen](./images/gui/final/after_open.png)
 
-![AfterClassification](./gui/final/after_classification.png)
+![AfterClassification](./images/gui/final/after_classification.png)
 
 </details>
 
