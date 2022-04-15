@@ -1,5 +1,7 @@
 # Bakalárska práca [![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
 
+Poznámky k práci sú v sekcii [**Poznámky**](#poznámky).
+
 ## Zapuzdrené prostredie pre spracovanie obrázkov na rozpoznávanie húb
 
 Autor: Viktor Modroczký\
@@ -194,4 +196,23 @@ host/vgg16
 
 ```http
 host/inception-v3
+```
+
+### Poznámky
+
+Po vykonaní experimetov bola objavená chyba v kóde pri vytváraní matíc zámen. Išlo o vymenené označenie osi *x* a *y*.\
+Chyba bola opravená nasledovne:
+
+kód
+
+```python
+plt.xlabel('True Classes')
+plt.ylabel('Predicted Classes')
+```
+
+sa upravil na kód
+
+```python
+plt.xlabel('Predicted Classes')
+plt.ylabel('True Classes')
 ```
