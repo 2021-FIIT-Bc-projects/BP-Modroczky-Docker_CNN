@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  web:
+    image: cnn-image:1.0
+    container_name: cnn-container
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - type: bind
+        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/models
+        target: /cnn/models
