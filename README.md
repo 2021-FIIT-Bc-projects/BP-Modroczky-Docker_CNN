@@ -49,13 +49,37 @@ Dataset pre trénovanie a testovanie modelu Inception-v3 je dostupný na [odkaze
 - [FGVCx Fungi Classification Challenge](https://github.com/visipedia/fgvcx_fungi_comp#data)
 - [Mushroom Observer](https://mushroomobserver.org/articles/20)
 
-### Skripty
+### Modely
 
-Pred spúšťaním skriptov treba nainštalovať potrebné knižnice.
+#### VGG16
+
+Model **VGG16** natrénovaný v prvom experimente je dostupný na [odkaze](https://drive.google.com/uc?id=1lRNyWJWmEYHFquGfqqPcqXrSVANk0jJW).
+
+#### Inception-v3
+
+Model **Inception-v3** natrénovaný v druhom experimente je dostupný na [odkaze](https://drive.google.com/uc?id=12mCiBrNAvLkslWfrG0XckJp_OlboyEcr).
+
+### Docker
+
+Na vytvorenie Docker obrazu je potrebné vykonať príkaz
 
 ```shell
-python -m pip install -r requirements.txt
+docker-compose build
 ```
+
+Na spustenie aplikácie s kontajnerom je potrebné vykonať príkaz
+
+```shell
+docker-compose -p <app_name> up -d
+```
+
+Na zastavenie kontajneru aplikácie je potrebné vykonať príkaz
+
+```shell
+docker-compose -p <app_name> stop
+```
+
+### Skripty
 
 #### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
 
@@ -200,7 +224,7 @@ host/inception-v3
 
 ### Poznámky
 
-Po vykonaní experimetov bola objavená chyba v kóde pri vytváraní matíc zámen. Išlo o vymenené označenie osi *x* a *y*.\
+Po vykonaní prvého experimetu bola objavená chyba v kóde pri vytváraní matíc zámen. Išlo o vymenené označenie osi *x* a *y*.\
 **Chyba bola opravená nasledovne:**
 
 kód
