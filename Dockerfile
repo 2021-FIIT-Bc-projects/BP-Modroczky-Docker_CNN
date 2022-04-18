@@ -9,5 +9,5 @@ RUN touch obtain.json augment.json
 WORKDIR /cnn/.kaggle
 RUN touch kaggle.json
 WORKDIR /cnn/src/webapp
-CMD gunicorn --timeout 90 --bind 0.0.0.0:5000 classifier:app
-EXPOSE 5000
+CMD gunicorn --threads $THREADS --worker-class gthread --bind 0.0.0.0:$PORT classifier:app
+EXPOSE $PORT
