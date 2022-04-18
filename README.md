@@ -79,6 +79,14 @@ Na zastavenie kontajneru aplikácie je potrebné vykonať príkaz
 docker-compose -p <app_name> stop
 ```
 
+alebo
+
+```shell
+docker-compose -p <app_name> down
+```
+
+na zastavenie a vymazanie kontajneru a aplikácie.
+
 ### Skripty
 
 #### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
