@@ -64,35 +64,37 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        'jsonPath',
+        'jsonName',
         type=str,
-        help="Input json path that contains img_size integer, "
+        help="Input name of JSON that contains img_size integer, "
             "classes list, data_path, augmented_data_path"
     )
     args = parser.parse_args()
-    print("Using json {}".format(Path(args.jsonPath)))
+    print("Using JSON {}".format(Path(args.jsonName)))
 
     try:
-        with open(args.jsonPath) as json_file:
+        with Path('..', '..', "metadata", args.jsonName).open() as json_file:
             data = json.load(json_file)
         classes = data.get('classes', dict())
         data_path = data.get('data_path', '')
         augmented_data_path = data.get('augmented_data_path', '')
         img_size = data.get('img_size', 0)
-    except ValueError as err:
-        exit("Cannot parse json from {}".format(args.jsonPath))
+    except ValueError:
+        exit("Cannot parse JSON from {}".format(args.jsonName))
+    except FileNotFoundError:
+        exit("JSON {} not found".format(args.jsonName))
 
     if not classes or not data_path or not augmented_data_path or img_size == 0:
-        exit("Json has to contain img_size integer, classes list, data_path, augmented_data_path")
+        exit("JSON has to contain img_size integer, classes list, data_path, augmented_data_path")
 
     train = classes.get('train', dict())
     test = classes.get('test', dict())
 
-    train_data_path = Path(data_path, 'train')
-    train_augmented_data_path = Path(augmented_data_path, 'train')
+    train_data_path = Path('..', '..', data_path, 'train')
+    train_augmented_data_path = Path('..', '..', augmented_data_path, 'train')
 
-    test_data_path = Path(data_path, 'test')
-    test_augmented_data_path = Path(augmented_data_path, 'test')
+    test_data_path = Path('..', '..', data_path, 'test')
+    test_augmented_data_path = Path('..', '..', augmented_data_path, 'test')
 
     for class_name, count in train.items():
         class_path = Path(train_data_path, class_name)

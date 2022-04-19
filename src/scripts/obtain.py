@@ -19,31 +19,31 @@ queries = list()
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    'jsonPath',
+    'jsonName',
     type=str,
-    help="Input json path that contains classes list, tsv_path, dl_path"
+    help="Input name of JSON that contains classes list, tsv_path, dl_path"
 )
 
 args = parser.parse_args()
-print("Using json {}".format(Path(args.jsonPath)))
+print("Using JSON {}".format(args.jsonName))
 
 try:
-    with open(args.jsonPath) as json_file:
+    with Path('..', '..', "metadata", args.jsonName).open() as json_file:
         data = json.load(json_file)
     queries = data.get('queries', dict())
     tsv_path = data.get('tsv_path', '')
     dl_path = data.get('dl_path', '')
     authors_path = data.get('authors_path', '')
     limit = data.get('limit', 0)
-except ValueError as err:
-    exit("Cannot parse json from {}".format(args.jsonPath))
+except ValueError:
+    exit("Cannot parse data from {}".format(args.jsonName))
+except FileNotFoundError:
+    exit("JSON {} not found".format(args.jsonName))
 
-if not queries or not tsv_path or not dl_path or limit == 0:
-    exit("Json has to contain classes list, tsv_path, dl_path")
+if not queries or not tsv_path or not dl_path or not authors_path or limit == 0:
+    exit("JSON has to contain classes list, tsv_path, dl_path")
 
-df = pd.read_table(tsv_path)
-
-print(df['license'].unique())
+df = pd.read_table(Path('..', '..', tsv_path))
 
 for query in queries:
     to_download = df[df['name'].astype(str).str.contains(query, case=False)].head(limit)
@@ -52,7 +52,7 @@ for query in queries:
     names = set()
     num = 0
 
-    path = Path(dl_path, query.split(' ')[0])
+    path = Path('..', '..', dl_path, query.split(' ')[0])
     path.mkdir(parents=True, exist_ok=True)
 
     for _, row in to_download.iterrows():
@@ -75,7 +75,7 @@ for query in queries:
             print(e)
         num += 1
 
-    with open(Path(authors_path, "{}_authors.txt".format(query)), 'w', encoding="utf-8") as f:
+    with open(Path('..', '..', authors_path, "{}_authors.txt".format(query)), 'w', encoding="utf-8") as f:
         for name in names:
             try:
                 f.write("{}\n".format(str(name)))
