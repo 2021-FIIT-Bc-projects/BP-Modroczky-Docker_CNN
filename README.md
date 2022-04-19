@@ -67,13 +67,15 @@ Na vytvorenie Docker obrazu je potrebné vykonať príkaz
 docker-compose build
 ```
 
-Na spustenie aplikácie s kontajnerom je potrebné vykonať príkaz
+Na spustenie aplikácie s kontajnerom služby je potrebné vykonať príkaz
 
 ```shell
-docker-compose -p <app_name> up -d
+docker-compose -p <app_name> up -d <service_name>
 ```
 
-Na zastavenie kontajneru aplikácie je potrebné vykonať príkaz
+Parameter `service_name` môže byť jedna zo služieb `obtain`, `augment`, `train` alebo `web`.
+
+Na zastavenie kontajnerov aplikácie je potrebné vykonať príkaz
 
 ```shell
 docker-compose -p <app_name> stop
@@ -89,13 +91,19 @@ na zastavenie a vymazanie kontajneru a aplikácie.
 
 ### Skripty
 
+**Všetky cesty sa musia uvádzať relatívne k root priečinku projektu.**
+
 #### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
 
+Spustenie mimo Docker kontajneru:
+
 ```shell
-python obtain.py <path/to/json/file>
+python obtain.py <json_name>
 ```
 
-Príklad metadát v json súbore pre skript [obtain.py](./src/scripts/obtain.py):
+`json_name` je meno JSON súboru v priečinku metadata.
+
+Príklad metadát v JSON súbore pre skript [obtain.py](./src/scripts/obtain.py):
 
 ```json
 {
@@ -124,9 +132,13 @@ Príklad metadát v json súbore pre skript [obtain.py](./src/scripts/obtain.py)
 
 #### Skript pre rozšírenie trénovacieho datasetu
 
+Spustenie mimo Docker kontajneru:
+
 ```shell
-python augment.py <path/to/json/file>
+python augment.py <json_name>
 ```
+
+`json_name` je meno JSON súboru v priečinku metadata.
 
 Príklad metadát v json súbore pre skript [augment.py](./src/scripts/augment.py):
 
