@@ -22,6 +22,6 @@
       "psilocybe": 7
     }
   },
-  "data_path": "../../data/dataset",
-  "augmented_data_path": "../../data/dataset_augmented_inception"
+  "data_path": "data/dataset",
+  "augmented_data_path": "data/dataset_augmented_inception"
 }

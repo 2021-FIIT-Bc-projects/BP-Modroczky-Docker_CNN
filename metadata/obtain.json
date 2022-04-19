@@ -1,7 +1,7 @@
 {
-  "tsv_path": "../../data/mushroom_observer.tsv",
-  "dl_path": "../../data/dataset/train",
-  "authors_path": "../../data",
+  "tsv_path": "data/mushroom_observer.tsv",
+  "dl_path": "data/dataset/train",
+  "authors_path": "data",
   "queries": [
     "macrolepiota",
     "craterellus",
