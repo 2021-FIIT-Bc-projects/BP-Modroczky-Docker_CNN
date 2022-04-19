@@ -2,7 +2,7 @@ version: '3.9'
 services:
   web:
     image: cnn-image:1.0
-    container_name: cnn-container
+    container_name: web-container
     build: .
     ports:
       - "5000:5000"
@@ -10,6 +10,61 @@ services:
       - type: bind
         source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/models
         target: /cnn/models
-    environment:
-      - PORT=5000
-      - THREADS=8
+    working_dir: /cnn/src/webapp
+    command: gunicorn --timeout 90 --threads 8 --worker-class gthread --bind 0.0.0.0:5000 classifier:app
+  obtain:
+    image: cnn-image:1.0
+    container_name: obtain-container
+    build: .
+    volumes:
+      - type: bind
+        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/data
+        target: /cnn/data
+      - type: bind
+        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/metadata
+        target: /cnn/metadata
+    working_dir: /cnn/src/scripts
+    command: python obtain.py obtain.json
+  augment:
+    image: cnn-image:1.0
+    container_name: augment-container
+    build: .
+    volumes:
+      - type: bind
+        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/data
+        target: /cnn/data
+      - type: bind
+        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/metadata
+        target: /cnn/metadata
+    working_dir: /cnn/src/scripts
+    command: python augment.py augment.json
+  train:
+    image: cnn-image:1.0
+    container_name: train-container
+    build: .
+    ports:
+      - "5001:5001"
+    volumes:
+      - type: bind
+        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/data
+        target: /cnn/data
+      - type: bind
+        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/models
+        target: /cnn/models
+      - type: bind
+        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/logs
+        target: /cnn/logs
+    working_dir: /cnn/src/notebooks
+    command: jupyter notebook --ip=0.0.0.0 --port=5001 --allow-root
+  tensorboard:
+    image: cnn-image:1.0
+    container_name: tensorboard-container
+    build: .
+    ports:
+      - "5002:5002"
+    volumes:
+      - type: bind
+        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/logs
+        target: /cnn/logs
+    working_dir: /cnn/logs
+    command: rm -rf ./ && tensorboard --host 0.0.0.0 --port 5002 --logdir .
