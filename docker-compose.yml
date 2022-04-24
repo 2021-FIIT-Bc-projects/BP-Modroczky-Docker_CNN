@@ -69,5 +69,5 @@ services:
       - type: bind
         source: ${CNN_PARENT_PATH:?err}/cnn/logs
         target: /cnn/logs
-    working_dir: /cnn/logs
-    command: rm -rf ./ && tensorboard --host 0.0.0.0 --port 5002 --logdir .
+    working_dir: /cnn
+    command: sh -c "rm -rf logs/* && tensorboard --host 0.0.0.0 --port 5002 --logdir logs"
