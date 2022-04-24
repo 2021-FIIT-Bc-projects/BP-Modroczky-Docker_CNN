@@ -54,6 +54,9 @@ services:
       - type: bind
         source: ${CNN_PARENT_PATH:?err}/cnn/logs
         target: /cnn/logs
+      - type: bind
+        source: ${CNN_PARENT_PATH:?err}/cnn/plots
+        target: /cnn/plots
     working_dir: /cnn/src/notebooks
     command: jupyter notebook --ip 0.0.0.0 --port 5001 --allow-root
   tensorboard:
