@@ -4,6 +4,7 @@ models
 fungi_classifier/uploaded_images
 .kaggle
 logs
+./plots
 
 # Cache files
 src/__pycache__/
