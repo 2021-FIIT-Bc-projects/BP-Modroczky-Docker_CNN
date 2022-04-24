@@ -6,4 +6,4 @@ COPY /src/notebooks/inception_v3/inception_v3.ipynb src/notebooks/inception_v3/
 COPY /src/notebooks/vgg16/vgg16.ipynb src/notebooks/vgg16/
 COPY /src/webapp src/webapp
 COPY /src/scripts src/scripts
-RUN mkdir metadata data models
+RUN mkdir metadata data models logs

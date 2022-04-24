@@ -5,66 +5,66 @@ services:
     container_name: web-container
     build: .
     ports:
-      - "5000:5000"
+      - "${CNN_GUNICORN_PORT:-5000}:5000"
     volumes:
       - type: bind
-        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/models
+        source: ${CNN_PARENT_PATH:?err}/cnn/models
         target: /cnn/models
     working_dir: /cnn/src/webapp
-    command: gunicorn --timeout 90 --threads 8 --worker-class gthread --bind 0.0.0.0:5000 classifier:app
+    command: gunicorn --timeout 90 --threads ${CNN_GUNICORN_THREADS:-8} --worker-class gthread --bind 0.0.0.0:5000 classifier:app
   obtain:
     image: cnn-image:1.0
     container_name: obtain-container
     build: .
     volumes:
       - type: bind
-        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/data
+        source: ${CNN_PARENT_PATH:?err}/cnn/data
         target: /cnn/data
       - type: bind
-        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/metadata
+        source: ${CNN_PARENT_PATH:?err}/cnn/metadata
         target: /cnn/metadata
     working_dir: /cnn/src/scripts
-    command: python obtain.py obtain.json
+    command: python obtain.py ${CNN_OBTAIN_JSON:-obtain.json}
   augment:
     image: cnn-image:1.0
     container_name: augment-container
     build: .
     volumes:
       - type: bind
-        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/data
+        source: ${CNN_PARENT_PATH:?err}/cnn/data
         target: /cnn/data
       - type: bind
-        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/metadata
+        source: ${CNN_PARENT_PATH:?err}/cnn/metadata
         target: /cnn/metadata
     working_dir: /cnn/src/scripts
-    command: python augment.py augment.json
+    command: python augment.py ${CNN_AUGMENT_JSON:-augment.json}
   train:
     image: cnn-image:1.0
     container_name: train-container
     build: .
     ports:
-      - "5001:5001"
+      - "${CNN_NOTEBOOK_PORT:-5001}:5001"
     volumes:
       - type: bind
-        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/data
+        source: ${CNN_PARENT_PATH:?err}/cnn/data
         target: /cnn/data
       - type: bind
-        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/models
+        source: ${CNN_PARENT_PATH:?err}/cnn/models
         target: /cnn/models
       - type: bind
-        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/logs
+        source: ${CNN_PARENT_PATH:?err}/cnn/logs
         target: /cnn/logs
     working_dir: /cnn/src/notebooks
-    command: jupyter notebook --ip=0.0.0.0 --port=5001 --allow-root
+    command: jupyter notebook --ip 0.0.0.0 --port 5001 --allow-root
   tensorboard:
     image: cnn-image:1.0
     container_name: tensorboard-container
     build: .
     ports:
-      - "5002:5002"
+      - "${CNN_TENSORBOARD_PORT:-5002}:5002"
     volumes:
       - type: bind
-        source: /c/users/viktor/pycharmprojects/bc_cnn_mushrooms/logs
+        source: ${CNN_PARENT_PATH:?err}/cnn/logs
         target: /cnn/logs
     working_dir: /cnn/logs
     command: rm -rf ./ && tensorboard --host 0.0.0.0 --port 5002 --logdir .
