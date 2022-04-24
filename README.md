@@ -184,7 +184,7 @@ Notebook [vgg16.ipynb](src/notebooks/vgg16.ipynb) na trénovanie a testovanie mo
 <details>
 <summary><b>Vybudovaný model VGG16 pomocou Keras</b></summary>
 
-![VGG16](plots/vgg16_plot.png)
+![VGG16](images/plots/vgg16_plot.png)
 
 </details>
 
