@@ -3,6 +3,7 @@ data
 models
 fungi_classifier/uploaded_images
 .kaggle
+logs
 
 # Cache files
 src/__pycache__/
