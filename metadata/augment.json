@@ -1,0 +1,13 @@
+{
+    "img_size": 299,
+    "classes": {
+        "train": {
+            "macrolepiota": 97,
+            "craterellus": 55,
+            "pleurotus": 34,
+            "psilocybe": 80
+        }
+    },
+    "data_path": "data/dataset_test",
+    "augmented_data_path": "data/dataset_test_augmented"
+}

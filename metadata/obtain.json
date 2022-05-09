@@ -1,12 +1,12 @@
 {
   "tsv_path": "data/mushroom_observer.tsv",
-  "dl_path": "data/dataset/train",
-  "authors_path": "data",
+  "dl_path": "data/dataset_test/train",
+  "authors_path": "data/dataset_test",
   "queries": [
     "macrolepiota",
     "craterellus",
     "pleurotus",
     "psilocybe"
   ],
-  "limit": 3000
+  "limit": 2
 }
