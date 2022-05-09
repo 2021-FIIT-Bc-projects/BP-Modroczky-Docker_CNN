@@ -7,9 +7,7 @@ services:
     ports:
       - "${CNN_GUNICORN_PORT:-5000}:5000"
     volumes:
-      - type: bind
-        source: ./models
-        target: /cnn/models
+      - ./models:/cnn/models
     working_dir: /cnn/src/webapp
     command: gunicorn --timeout 90 --threads ${CNN_GUNICORN_THREADS:-8} --worker-class gthread --bind 0.0.0.0:5000 classifier:app
   obtain:
@@ -17,12 +15,8 @@ services:
     container_name: obtain-container
     build: .
     volumes:
-      - type: bind
-        source: ./data
-        target: /cnn/data
-      - type: bind
-        source: ./metadata
-        target: /cnn/metadata
+      - ./data:/cnn/data
+      - ./metadata:/cnn/metadata
     working_dir: /cnn/src/scripts
     command: python obtain.py ${CNN_OBTAIN_JSON:-obtain.json}
   augment:
@@ -30,12 +24,8 @@ services:
     container_name: augment-container
     build: .
     volumes:
-      - type: bind
-        source: ./data
-        target: /cnn/data
-      - type: bind
-        source: ./metadata
-        target: /cnn/metadata
+      - ./data:/cnn/data
+      - ./metadata:/cnn/metadata
     working_dir: /cnn/src/scripts
     command: python augment.py ${CNN_AUGMENT_JSON:-augment.json}
   train:
@@ -45,18 +35,10 @@ services:
     ports:
       - "${CNN_NOTEBOOK_PORT:-5001}:5001"
     volumes:
-      - type: bind
-        source: ./data
-        target: /cnn/data
-      - type: bind
-        source: ./models
-        target: /cnn/models
-      - type: bind
-        source: ./logs
-        target: /cnn/logs
-      - type: bind
-        source: ./plots
-        target: /cnn/plots
+      - ./data:/cnn/data
+      - ./models:/cnn/models
+      - ./logs:/cnn/logs
+      - ./plots:/cnn/plots
     working_dir: /cnn/src/notebooks
     command: jupyter notebook --ip 0.0.0.0 --port 5001 --allow-root
   tensorboard:
@@ -66,8 +48,6 @@ services:
     ports:
       - "${CNN_TENSORBOARD_PORT:-5002}:5002"
     volumes:
-      - type: bind
-        source: ./logs
-        target: /cnn/logs
+      - ./logs:/cnn/logs
     working_dir: /cnn
     command: sh -c "rm -rf logs/* && tensorboard --host 0.0.0.0 --port 5002 --logdir logs"
