@@ -75,7 +75,10 @@ for query in queries:
             print(e)
         num += 1
 
-    with open(Path('..', '..', authors_path, "{}_authors.txt".format(query)), 'w', encoding="utf-8") as f:
+    authors = Path('..', '..', authors_path)
+    authors.mkdir(parents=True, exist_ok=True)
+
+    with open(Path(authors, "{}_authors.txt".format(query)), 'w', encoding="utf-8") as f:
         for name in names:
             try:
                 f.write("{}\n".format(str(name)))

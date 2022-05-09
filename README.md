@@ -94,7 +94,7 @@ na zastavenie a vymazanie kontajneru a aplikácie.
 
 ### Skripty
 
-**Všetky cesty sa musia uvádzať relatívne k root priečinku projektu.**
+**Všetky cesty sa musia uvádzať relatívne k root priečinku projektu, a to `cnn`.**
 
 #### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
 
