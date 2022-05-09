@@ -61,8 +61,20 @@ Model **Inception-v3** natrénovaný v druhom experimente je dostupný na [odkaz
 
 ### Docker
 
-Pred vybudovaním Docker obrazu, resp. spustením ktorejkoľvek služby je nutné nastaviť premennú prostredia `CNN_ABSOLUTE_PATH` na absolútnu cestu ku koreňovému adresár projektu. Premenná prostredia musí byť definovaná v `.env` súbore v koreňovom adresári spolu so súbormi `docker-compose.yaml` a `Dockerfile`.\
-Príklad premennej prostredia `CNN_ABSOLUTE_PATH` pre Windows: `/c/users/viktor/projects/cnn`
+V súbore `.env` v koreňovom adresári projektu je možné nastaviť niekoľko voliteľných premenných prostredia, a to:
+
+1. `CNN_GUNICORN_PORT` - port hostiteľa, na ktorý je namapovaný port 5000 z kontajnera webovej aplikácie.
+Predvolená hodnota je rovnaká ako port v kontajneri, čiže port `5000`.
+2. `CNN_GUNICORN_THREADS` - počet vlákien na spracúvanie požiadaviek na webovú aplikáciu.
+Predvolená hodnota je `8`.
+3. `CNN_OBTAIN_JSON` - názov JSON súboru v adresári `metadata`, v ktorom sú uložené metadáta k získavaniu dát.
+Predvolená hodnota je `obtain.json`.
+4. `CNN_AUGMENT_JSON` - názov JSON súboru v adresári `metadata`, v ktorom sú uložené metadáta k rozširovaniu dát.
+Predvolená hodnota je `augment.json`.
+5. `CNN_NOTEBOOK_PORT` - port hostiteľa, na ktorý je namapovaný port 5001 z kontajnera pre Jupyter notebook na trénovanie a testovanie.
+Predvolená hodnota je rovnaká ako port v kontajneri, čiže port `5001`.
+6. `CNN_TENSORBOARD_PORT` - port hostiteľa, na ktorý je namapovaný port 5002 z kontajnera pre Tensorboard na sledovanie trénovania.
+Predvolená hodnota je rovnaká ako port v kontajneri, čiže port `5002`.
 
 Na vytvorenie Docker obrazu je potrebné vykonať príkaz
 
