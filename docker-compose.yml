@@ -8,7 +8,7 @@ services:
       - "${CNN_GUNICORN_PORT:-5000}:5000"
     volumes:
       - type: bind
-        source: ${CNN_PARENT_PATH:?err}/cnn/models
+        source: ${CNN_ABSOLUTE_PATH:?err}/models
         target: /cnn/models
     working_dir: /cnn/src/webapp
     command: gunicorn --timeout 90 --threads ${CNN_GUNICORN_THREADS:-8} --worker-class gthread --bind 0.0.0.0:5000 classifier:app
@@ -18,10 +18,10 @@ services:
     build: .
     volumes:
       - type: bind
-        source: ${CNN_PARENT_PATH:?err}/cnn/data
+        source: ${CNN_ABSOLUTE_PATH:?err}/data
         target: /cnn/data
       - type: bind
-        source: ${CNN_PARENT_PATH:?err}/cnn/metadata
+        source: ${CNN_ABSOLUTE_PATH:?err}/metadata
         target: /cnn/metadata
     working_dir: /cnn/src/scripts
     command: python obtain.py ${CNN_OBTAIN_JSON:-obtain.json}
@@ -31,10 +31,10 @@ services:
     build: .
     volumes:
       - type: bind
-        source: ${CNN_PARENT_PATH:?err}/cnn/data
+        source: ${CNN_ABSOLUTE_PATH:?err}/data
         target: /cnn/data
       - type: bind
-        source: ${CNN_PARENT_PATH:?err}/cnn/metadata
+        source: ${CNN_ABSOLUTE_PATH:?err}/metadata
         target: /cnn/metadata
     working_dir: /cnn/src/scripts
     command: python augment.py ${CNN_AUGMENT_JSON:-augment.json}
@@ -46,16 +46,16 @@ services:
       - "${CNN_NOTEBOOK_PORT:-5001}:5001"
     volumes:
       - type: bind
-        source: ${CNN_PARENT_PATH:?err}/cnn/data
+        source: ${CNN_ABSOLUTE_PATH:?err}/data
         target: /cnn/data
       - type: bind
-        source: ${CNN_PARENT_PATH:?err}/cnn/models
+        source: ${CNN_ABSOLUTE_PATH:?err}/models
         target: /cnn/models
       - type: bind
-        source: ${CNN_PARENT_PATH:?err}/cnn/logs
+        source: ${CNN_ABSOLUTE_PATH:?err}/logs
         target: /cnn/logs
       - type: bind
-        source: ${CNN_PARENT_PATH:?err}/cnn/plots
+        source: ${CNN_ABSOLUTE_PATH:?err}/plots
         target: /cnn/plots
     working_dir: /cnn/src/notebooks
     command: jupyter notebook --ip 0.0.0.0 --port 5001 --allow-root
@@ -67,7 +67,7 @@ services:
       - "${CNN_TENSORBOARD_PORT:-5002}:5002"
     volumes:
       - type: bind
-        source: ${CNN_PARENT_PATH:?err}/cnn/logs
+        source: ${CNN_ABSOLUTE_PATH:?err}/logs
         target: /cnn/logs
     working_dir: /cnn
     command: sh -c "rm -rf logs/* && tensorboard --host 0.0.0.0 --port 5002 --logdir logs"
