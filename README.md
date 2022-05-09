@@ -61,8 +61,8 @@ Model **Inception-v3** natrénovaný v druhom experimente je dostupný na [odkaz
 
 ### Docker
 
-Pred vybudovaním Docker obrazu, resp. spustením ktorejkoľvek služby je nutné nastaviť premennú prostredia `CNN_PARENT_PATH` na absolútnu cestu k adresáru, v ktorom sa nachádza koreňový adresár `cnn` projektu. Premenná prostredia musí byť definovaná v `.env` súbore v adresári `cnn` spolu so súbormi `docker-compose.yaml` a `Dockerfile`.\
-Príklad premennej prostredia `CNN_PARENT_PATH` pre Windows: `/c/users/viktor/projects`
+Pred vybudovaním Docker obrazu, resp. spustením ktorejkoľvek služby je nutné nastaviť premennú prostredia `CNN_ABSOLUTE_PATH` na absolútnu cestu ku koreňovému adresár projektu. Premenná prostredia musí byť definovaná v `.env` súbore v koreňovom adresári spolu so súbormi `docker-compose.yaml` a `Dockerfile`.\
+Príklad premennej prostredia `CNN_PARENT_PATH` pre Windows: `/c/users/viktor/projects/cnn`
 
 Na vytvorenie Docker obrazu je potrebné vykonať príkaz
 
@@ -94,7 +94,7 @@ na zastavenie a vymazanie kontajneru a aplikácie.
 
 ### Skripty
 
-**Všetky cesty sa musia uvádzať relatívne k root priečinku projektu, a to `cnn`.**
+**Všetky cesty sa musia uvádzať relatívne k root priečinku projektu, a to `$CNN_ABSOLUTE_PATH`.**
 
 #### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
 
