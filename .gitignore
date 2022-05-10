@@ -1,5 +1,6 @@
 # Project folders
-/data
+/data/*
+!data/dataset_example/
 /models
 /.kaggle
 /logs
