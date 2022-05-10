@@ -89,24 +89,25 @@ docker-compose build
 Na spustenie aplikácie s kontajnerom služby je potrebné vykonať príkaz
 
 ```shell
-docker-compose -p <app_name> up -d <service_name>
+docker-compose -p cnn-app up -d {service_name}
 ```
 
-Parameter `service_name` môže byť jedna zo služieb `obtain`, `augment`, `train` alebo `web`.
+Parameter `{service_name}` môže byť jedna zo služieb `obtain`, `augment`, `train`, `tensorboard` alebo `web`.
 
 Na zastavenie kontajnerov aplikácie je potrebné vykonať príkaz
 
 ```shell
-docker-compose -p <app_name> stop
+docker-compose -p cnn-app stop
 ```
 
 alebo
 
 ```shell
-docker-compose -p <app_name> down
+docker-compose -p cnn-app down
 ```
 
-na zastavenie a vymazanie kontajneru a aplikácie.
+na zastavenie a vymazanie kontajneru a aplikácie.\
+Prepínač `-p` nastavuje názov projektu, resp aplikácie a prepínač `-d` spúšťa kontajnery v tzv. detached móde, čiže v pozadí.
 
 ### Skripty
 
