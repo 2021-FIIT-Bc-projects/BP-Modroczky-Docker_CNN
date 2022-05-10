@@ -45,7 +45,9 @@ def inception_v3():
 
 
 def run(model_name, model):
-    request.files['file'].save(Path(settings.media_root, 'tmp'))
+    media_path = Path(settings.media_root)
+    media_path.mkdir(parents=True, exist_ok=True)
+    request.files['file'].save(Path(media_path, 'tmp'))
     prediction = classify(
         Path(settings.media_root, 'tmp').as_posix(),
         model,
@@ -74,10 +76,3 @@ def classify(image_path, model, class_names, img_size):
     response['final_probability'] = final_probability
 
     return response
-
-
-def save_file(file, media_root):
-	Path(media_root).mkdir(parents=True, exist_ok=True)
-	with open(media_root + '/tmp', 'wb+') as destination:
-		for chunk in file.chunks():
-			destination.write(chunk)
