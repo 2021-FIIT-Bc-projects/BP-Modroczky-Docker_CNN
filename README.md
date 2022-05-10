@@ -112,17 +112,22 @@ docker-compose -p cnn-app down
 ```
 
 na zastavenie a vymazanie kontajneru a aplikácie.\
-Prepínač `-p` nastavuje názov projektu, resp aplikácie a prepínač `-d` spúšťa kontajnery v tzv. detached móde, čiže v pozadí.
+Prepínač `-p` nastavuje názov projektu, resp aplikácie a prepínač `-d` spúšťa kontajnery v tzv. detached móde, čiže v pozadí.\
 
-Spustenie webovej aplikácie ako kontajnerizovanej služby `web` vyžaduje prítomnosť modelov vo forme súborov [`vgg16.h5`](https://drive.google.com/uc?id=1lRNyWJWmEYHFquGfqqPcqXrSVANk0jJW) a [`inception_v3.h5`](https://drive.google.com/uc?id=12mCiBrNAvLkslWfrG0XckJp_OlboyEcr) v priečinku `models` v koreňovom adresári projektu.
+**Pred spúšťamín služieb si prečítajte nasledovné časti:**
 
-### Skripty
+1. [Nastavenia pre skripty spúšťané v službách obtain a augment](#nastavenia-pre-skripty-spustane-v-sluzbach-obtain-a-augment)
+2. [Služby train a tensorboard](#služby-train-a-tensorboard)
+3. [Služba web](#služba-web)
+
+### Nastavenia pre skripty spúšťané v službách obtain a augment
 
 **Všetky cesty sa musia uvádzať relatívne ku koreňovému priečinku projektu. Aby boli cesty viditeľné pre kontajnery, je nutné, aby cesty smerovali do priečinka `data`.**
 
 #### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
 
-Príklad metadát v JSON súbore `obtain.json` v priečinku `metadata` pre skript [obtain.py](./src/scripts/obtain.py):
+Tento skript je automaticky spúšťaný službou `obtain`. Pred jej spustením je potrebné nastaviť metadáta v JSON súbore v priečinku `metadata`.
+Príklad metadát v JSON súbore `obtain.json` pre skript [obtain.py](./src/scripts/obtain.py):
 
 ```json
 {
@@ -151,7 +156,8 @@ Príklad metadát v JSON súbore `obtain.json` v priečinku `metadata` pre skrip
 
 #### Skript pre rozšírenie trénovacieho datasetu
 
-Príklad metadát v json súbore `augment.json` v priečinku `metadata` pre skript [augment.py](./src/scripts/augment.py):
+Tento skript je automaticky spúšťaný službou `augment`. Pred jej spustením je potrebné nastaviť metadáta v JSON súbore v priečinku `metadata`.
+Príklad metadát v JSON súbore `augment.json` pre skript [obtain.py](./src/scripts/augment.py):
 
 ```json
 {
@@ -199,6 +205,15 @@ python augment.py {json_name}
 ```
 
 `{json_name}` je meno JSON súboru v priečinku `metadata` v koreňovom adresári projektu.
+
+### Služby train a tensorboard
+
+Služba `train` spúšťa Jupyter notebook na písanie notebookov pre trénovanie alebo testovanie modelov. Spustenie služby `train` automaticky vytvorí priečinok `plots` pre ukladanie akýchkoľvek grafov z trénovania alebo testovania z notebookov.\
+Služba `tensorboard` spúšťa aplikáciu Tensorboard na sledovanie trénovania pomocou logov v priečinku `logs`, ktorý sa vytvára automaticky po spustení služby v prípade, že neexistuje.
+
+### Služba web
+
+Spustenie webovej aplikácie ako kontajnerizovanej služby `web` vyžaduje prítomnosť modelov vo forme súborov [`vgg16.h5`](https://drive.google.com/uc?id=1lRNyWJWmEYHFquGfqqPcqXrSVANk0jJW) a [`inception_v3.h5`](https://drive.google.com/uc?id=12mCiBrNAvLkslWfrG0XckJp_OlboyEcr) v priečinku `models` v koreňovom adresári projektu.
 
 ### Experiment 1 s modelom VGG16
 
