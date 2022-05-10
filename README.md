@@ -85,6 +85,17 @@ Predvolená hodnota je rovnaká ako port v kontajneri, čiže port `5001`.
 6. `CNN_TENSORBOARD_PORT` - port hostiteľa, na ktorý je namapovaný port 5002 z kontajnera pre Tensorboard na sledovanie trénovania.
 Predvolená hodnota je rovnaká ako port v kontajneri, čiže port `5002`.
 
+Príklad `.env` súboru:
+
+```env
+CNN_GUNICORN_PORT=1111
+CNN_GUNICORN_THREADS=16
+CNN_OBTAIN_JSON=my_obtain.json
+CNN_AUGMENT_JSON=my_augment.json
+CNN_NOTEBOOK_PORT=2222
+CNN_TENSORBOARD_PORT=3333
+```
+
 Na vytvorenie Docker obrazu je potrebné vykonať príkaz
 
 ```shell
