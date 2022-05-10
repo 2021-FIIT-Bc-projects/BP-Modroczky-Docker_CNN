@@ -61,6 +61,11 @@ Model **Inception-v3** natrénovaný v druhom experimente je dostupný na [odkaz
 
 ### Docker
 
+Použité verzie:
+
+Docker version 20.10.14, build a224086\
+Docker Compose version v2.4.1
+
 #### Diagram navrhnutého riešenia
 
 ![Docker](images/docker_setup.png)
