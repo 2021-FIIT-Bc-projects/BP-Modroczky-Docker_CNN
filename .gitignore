@@ -1,6 +1,7 @@
 # Project folders
 /data/*
 !data/dataset_example/
+!data/mushroom_observer.tsv
 /models
 /.kaggle
 /logs
