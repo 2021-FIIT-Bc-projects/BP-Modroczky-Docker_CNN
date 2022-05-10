@@ -61,6 +61,10 @@ Model **Inception-v3** natrénovaný v druhom experimente je dostupný na [odkaz
 
 ### Docker
 
+#### Diagram navrhnutého riešenia
+
+[Docker](images/docker_setup.png)
+
 V súbore `.env` v koreňovom adresári projektu je možné nastaviť niekoľko voliteľných premenných prostredia, a to:
 
 1. `CNN_GUNICORN_PORT` - port hostiteľa, na ktorý je namapovaný port 5000 z kontajnera webovej aplikácie.
@@ -106,7 +110,7 @@ na zastavenie a vymazanie kontajneru a aplikácie.
 
 ### Skripty
 
-**Všetky cesty sa musia uvádzať relatívne k root priečinku projektu, a to `$CNN_ABSOLUTE_PATH`.**
+**Všetky cesty sa musia uvádzať relatívne ku koreňovému priečinku projektu.**
 
 #### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
 
