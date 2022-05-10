@@ -112,11 +112,11 @@ docker-compose -p cnn-app down
 ```
 
 na zastavenie a vymazanie kontajneru a aplikácie.\
-Prepínač `-p` nastavuje názov projektu, resp aplikácie a prepínač `-d` spúšťa kontajnery v tzv. detached móde, čiže v pozadí.\
+Prepínač `-p` nastavuje názov projektu, resp aplikácie a prepínač `-d` spúšťa kontajnery v tzv. detached móde, čiže v pozadí.
 
 **Pred spúšťamín služieb si prečítajte nasledovné časti:**
 
-1. [Nastavenia pre skripty spúšťané v službách obtain a augment](#nastavenia-pre-skripty-spustane-v-sluzbach-obtain-a-augment)
+1. [Nastavenia pre skripty spúšťané v službách obtain a augment](#nastavenia-pre-skripty-spúšťané-v-službách-obtain-a-augment)
 2. [Služby train a tensorboard](#služby-train-a-tensorboard)
 3. [Služba web](#služba-web)
 
@@ -213,7 +213,8 @@ Služba `tensorboard` spúšťa aplikáciu Tensorboard na sledovanie trénovania
 
 ### Služba web
 
-Spustenie webovej aplikácie ako kontajnerizovanej služby `web` vyžaduje prítomnosť modelov vo forme súborov [`vgg16.h5`](https://drive.google.com/uc?id=1lRNyWJWmEYHFquGfqqPcqXrSVANk0jJW) a [`inception_v3.h5`](https://drive.google.com/uc?id=12mCiBrNAvLkslWfrG0XckJp_OlboyEcr) v priečinku `models` v koreňovom adresári projektu.
+Spustenie webovej aplikácie ako kontajnerizovanej služby `web` vyžaduje prítomnosť modelov vo forme súborov [`vgg16.h5`](https://drive.google.com/uc?id=1lRNyWJWmEYHFquGfqqPcqXrSVANk0jJW) a [`inception_v3.h5`](https://drive.google.com/uc?id=12mCiBrNAvLkslWfrG0XckJp_OlboyEcr) v priečinku `models` v koreňovom adresári projektu.\
+Podrobnosti o webovej aplikácii sú v sekcii [Webová aplikácie](#webová-aplikácia).
 
 ### Experiment 1 s modelom VGG16
 
