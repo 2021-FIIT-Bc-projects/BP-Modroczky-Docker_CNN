@@ -114,25 +114,19 @@ docker-compose -p cnn-app down
 na zastavenie a vymazanie kontajneru a aplikácie.\
 Prepínač `-p` nastavuje názov projektu, resp aplikácie a prepínač `-d` spúšťa kontajnery v tzv. detached móde, čiže v pozadí.
 
+Spustenie webovej aplikácie ako kontajnerizovanej služby `web` vyžaduje prítomnosť modelov vo forme súborov [`vgg16.h5`](https://drive.google.com/uc?id=1lRNyWJWmEYHFquGfqqPcqXrSVANk0jJW) a [`inception_v3.h5`](https://drive.google.com/uc?id=12mCiBrNAvLkslWfrG0XckJp_OlboyEcr) v priečinku `models` v koreňovom adresári projektu.
+
 ### Skripty
 
-**Všetky cesty sa musia uvádzať relatívne ku koreňovému priečinku projektu.**
+**Všetky cesty sa musia uvádzať relatívne ku koreňovému priečinku projektu. Aby boli cesty viditeľné pre kontajnery, je nutné, aby cesty smerovali do priečinka `data`.**
 
 #### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
 
-Spustenie mimo Docker kontajneru:
-
-```shell
-python obtain.py <json_name>
-```
-
-`json_name` je meno JSON súboru v priečinku metadata.
-
-Príklad metadát v JSON súbore pre skript [obtain.py](./src/scripts/obtain.py):
+Príklad metadát v JSON súbore `obtain.json` v priečinku `metadata` pre skript [obtain.py](./src/scripts/obtain.py):
 
 ```json
 {
-    "tsv_path": "path/to/mushroom/observer/tsv/file",
+    "tsv_path": "data/mushroom_observer.tsv",
     "dl_path": "path/to/download/folder",
     "authors_path": "path/to/save/author/names",
     "queries": [
@@ -149,7 +143,7 @@ Príklad metadát v JSON súbore pre skript [obtain.py](./src/scripts/obtain.py)
 }
 ```
 
-`tsv_path` je umiestnenie súboru [tsv](https://drive.google.com/file/d/1fPXJtJpqiQEQb1ezINdFK-Jhee84DvMA/view?usp=sharing), ktorý obsahuje zoznam obrázkov húb z Mushroom Observer.\
+`tsv_path` je umiestnenie súboru [tsv](https://drive.google.com/file/d/1fPXJtJpqiQEQb1ezINdFK-Jhee84DvMA/view?usp=sharing), ktorý obsahuje zoznam obrázkov húb z Mushroom Observer. Súbor `mushroom_observer.tsv` je predvolene umiestnený v `data/mushroom_observer.tsv`.\
 `dl_path` je priečinok, do ktorého sa majú obrázky sťahovať.\
 `authors_path` je priečinok, do ktorého sa má uložiť textový súbor s menami autorov obrázkov.\
 `queries` je zoznam názvov húb, ktoré sa majú stiahnuť.\
@@ -157,15 +151,7 @@ Príklad metadát v JSON súbore pre skript [obtain.py](./src/scripts/obtain.py)
 
 #### Skript pre rozšírenie trénovacieho datasetu
 
-Spustenie mimo Docker kontajneru:
-
-```shell
-python augment.py <json_name>
-```
-
-`json_name` je meno JSON súboru v priečinku metadata.
-
-Príklad metadát v json súbore pre skript [augment.py](./src/scripts/augment.py):
+Príklad metadát v json súbore `augment.json` v priečinku `metadata` pre skript [augment.py](./src/scripts/augment.py):
 
 ```json
 {
@@ -200,7 +186,19 @@ Príklad metadát v json súbore pre skript [augment.py](./src/scripts/augment.p
 `img_size` je veľkosť výstupných obrázkov.\
 `classes` je zoznam tried v trénovacom a testovacom priečinku pre klasifikáciu spolu s číslom, ktoré hovorí, koľkokrát sa má každý obrázok v danej triede rozšíriť. Ak sa uvedie iba zoznam pre trénovací alebo testovací dataset, tak rozširovanie prebehne len pre uvedený dataset.\
 `data_path` je umiestnenie trénovacieho ($data_path/train) a testovacieho datasetu ($data_path/test).\
-`augmented_data_path` je nové umiestnenie rozšíreného testovacieho datasetu ($augmented_data_path/test) a trénovacieho datasetu ($augmented_data_path/train).
+`augmented_data_path` je nové umiestnenie rozšíreného trénovacieho datasetu ($augmented_data_path/train) a testovacieho datasetu ($augmented_data_path/test).
+
+Spustenie skriptov mimo Docker kontajneru:
+
+```shell
+python obtain.py {json_name}
+```
+
+```shell
+python augment.py {json_name}
+```
+
+`{json_name}` je meno JSON súboru v priečinku `metadata` v koreňovom adresári projektu.
 
 ### Experiment 1 s modelom VGG16
 
