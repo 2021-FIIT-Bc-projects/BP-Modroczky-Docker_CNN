@@ -108,7 +108,14 @@ Na spustenie aplikácie s kontajnerom služby je potrebné vykonať príkaz
 docker-compose -p cnn-app up -d {service_name}
 ```
 
-Parameter `{service_name}` môže byť jedna zo služieb `obtain`, `augment`, `train`, `tensorboard` alebo `web`.
+Parameter `{service_name}` môže byť jedna zo služieb `obtain`, `augment`, `train`, `tensorboard` alebo `web`.\
+Výpisy je potom možné vypísať alebo sledovať pomocou príkazu
+
+```shell
+docker logs [--follow] {service_container_name}
+```
+
+Parameter `{service_container_name}` je jeden z kontajnerov služby `obatin-container`, `augment-container`, `train-container`, `tensorboard-container` alebo `web-container`. Prepínač `--follow` zapne sledovanie všetkých nových výpisov kontajneru, čiže sa vypíšu doterajšie výpisy a budú sa aj naďalej sledovať.
 
 Na zastavenie kontajnerov aplikácie je potrebné vykonať príkaz
 
