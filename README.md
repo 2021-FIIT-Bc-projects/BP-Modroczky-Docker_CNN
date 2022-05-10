@@ -63,7 +63,7 @@ Model **Inception-v3** natrénovaný v druhom experimente je dostupný na [odkaz
 
 #### Diagram navrhnutého riešenia
 
-[Docker](images/docker_setup.png)
+![Docker](images/docker_setup.png)
 
 V súbore `.env` v koreňovom adresári projektu je možné nastaviť niekoľko voliteľných premenných prostredia, a to:
 
