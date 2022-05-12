@@ -115,7 +115,7 @@ Výpisy je potom možné vypísať alebo sledovať pomocou príkazu
 docker logs [--follow] {service_container_name}
 ```
 
-Parameter `{service_container_name}` je jeden z kontajnerov služby `obatin-container`, `augment-container`, `train-container`, `tensorboard-container` alebo `web-container`. Prepínač `--follow` zapne sledovanie všetkých nových výpisov kontajneru, čiže sa vypíšu doterajšie výpisy a budú sa aj naďalej sledovať.
+Parameter `{service_container_name}` je jeden z kontajnerov služby `obtain-container`, `augment-container`, `train-container`, `tensorboard-container` alebo `web-container`. Prepínač `--follow` zapne sledovanie všetkých nových výpisov kontajneru, čiže sa vypíšu doterajšie výpisy a budú sa aj naďalej sledovať.
 
 Na zastavenie kontajnerov aplikácie je potrebné vykonať príkaz
 
@@ -129,7 +129,7 @@ alebo
 docker-compose -p cnn-app down
 ```
 
-na zastavenie a vymazanie kontajneru a aplikácie.\
+na zastavenie a vymazanie kontajnerov a aplikácie.\
 Prepínač `-p` nastavuje názov projektu, resp aplikácie a prepínač `-d` spúšťa kontajnery v tzv. detached móde, čiže v pozadí.
 
 **Pred spúšťamín služieb si prečítajte nasledovné časti:**
@@ -140,7 +140,7 @@ Prepínač `-p` nastavuje názov projektu, resp aplikácie a prepínač `-d` sp�
 
 ### Nastavenia pre skripty spúšťané v službách obtain a augment
 
-**Všetky cesty sa musia uvádzať relatívne ku koreňovému priečinku projektu. Aby boli cesty viditeľné pre kontajnery, je nutné, aby cesty smerovali do priečinka `data`.**
+**Všetky cesty v JSON súboroch sa musia uvádzať relatívne ku koreňovému priečinku projektu. Aby boli cesty viditeľné pre kontajnery, je nutné, aby cesty smerovali do priečinka `data`.**
 
 #### Skript pre získanie obrázkov do trénovacieho a testovacieho datasetu
 
@@ -175,7 +175,7 @@ Príklad metadát v JSON súbore `obtain.json` pre skript [obtain.py](./src/scri
 #### Skript pre rozšírenie trénovacieho datasetu
 
 Tento skript je automaticky spúšťaný službou `augment`. Pred jej spustením je potrebné nastaviť metadáta v JSON súbore v priečinku `metadata`.
-Príklad metadát v JSON súbore `augment.json` pre skript [obtain.py](./src/scripts/augment.py):
+Príklad metadát v JSON súbore `augment.json` pre skript [augment.py](./src/scripts/augment.py):
 
 ```json
 {
