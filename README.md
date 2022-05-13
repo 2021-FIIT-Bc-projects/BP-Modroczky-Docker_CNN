@@ -72,18 +72,14 @@ Docker Compose version v2.4.1
 
 V súbore `.env` v koreňovom adresári projektu je možné nastaviť niekoľko voliteľných premenných prostredia, a to:
 
-1. `CNN_GUNICORN_PORT` - port hostiteľa, na ktorý je namapovaný port 5000 z kontajnera webovej aplikácie.
-Predvolená hodnota je rovnaká ako port v kontajneri, čiže port `5000`.
-2. `CNN_GUNICORN_THREADS` - počet vlákien na spracúvanie požiadaviek na webovú aplikáciu.
-Predvolená hodnota je `8`.
+1. `CNN_GUNICORN_PORT` - port, na ktorom beží webová aplikácia. Predvolená hodnota je port `5000`.
+2. `CNN_GUNICORN_THREADS` - počet vlákien na spracúvanie požiadaviek na webovú aplikáciu. Predvolená hodnota je `8`.
 3. `CNN_OBTAIN_JSON` - názov JSON súboru v adresári `metadata`, v ktorom sú uložené metadáta k získavaniu dát.
 Predvolená hodnota je `obtain.json`.
 4. `CNN_AUGMENT_JSON` - názov JSON súboru v adresári `metadata`, v ktorom sú uložené metadáta k rozširovaniu dát.
 Predvolená hodnota je `augment.json`.
-5. `CNN_NOTEBOOK_PORT` - port hostiteľa, na ktorý je namapovaný port 5001 z kontajnera pre Jupyter notebook na trénovanie a testovanie.
-Predvolená hodnota je rovnaká ako port v kontajneri, čiže port `5001`.
-6. `CNN_TENSORBOARD_PORT` - port hostiteľa, na ktorý je namapovaný port 5002 z kontajnera pre Tensorboard na sledovanie trénovania.
-Predvolená hodnota je rovnaká ako port v kontajneri, čiže port `5002`.
+5. `CNN_NOTEBOOK_PORT` - port, na ktorom beží Jupyter Notebook na trénovanie a testovanie. Predvolená hodnota je port `5001`.
+6. `CNN_TENSORBOARD_PORT` - port, na ktorom beží Tensorboard na sledovanie trénovania. Predvolená hodnota je port `5002`.
 
 Príklad `.env` súboru:
 
