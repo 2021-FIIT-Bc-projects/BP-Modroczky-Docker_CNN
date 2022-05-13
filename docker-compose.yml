@@ -5,11 +5,11 @@ services:
     container_name: web-container
     build: .
     ports:
-      - "${CNN_GUNICORN_PORT:-5000}:5000"
+      - "${CNN_GUNICORN_PORT:-5000}:${CNN_GUNICORN_PORT:-5000}"
     volumes:
       - ./models:/cnn/models
     working_dir: /cnn/src/webapp
-    command: gunicorn --timeout 90 --threads ${CNN_GUNICORN_THREADS:-8} --worker-class gthread --bind 0.0.0.0:5000 classifier:app
+    command: gunicorn --timeout 90 --threads ${CNN_GUNICORN_THREADS:-8} --worker-class gthread --bind 0.0.0.0:${CNN_GUNICORN_PORT:-5000} classifier:app
   obtain:
     image: cnn-image:1.0
     container_name: obtain-container
@@ -33,21 +33,21 @@ services:
     container_name: train-container
     build: .
     ports:
-      - "${CNN_NOTEBOOK_PORT:-5001}:5001"
+      - ${CNN_NOTEBOOK_PORT:-5001}:${CNN_NOTEBOOK_PORT:-5001}
     volumes:
       - ./data:/cnn/data
       - ./models:/cnn/models
       - ./logs:/cnn/logs
       - ./plots:/cnn/plots
     working_dir: /cnn/src/notebooks
-    command: jupyter notebook --ip 0.0.0.0 --port 5001 --allow-root
+    command: jupyter notebook --ip 0.0.0.0 --port ${CNN_NOTEBOOK_PORT:-5001} --allow-root
   tensorboard:
     image: cnn-image:1.0
     container_name: tensorboard-container
     build: .
     ports:
-      - "${CNN_TENSORBOARD_PORT:-5002}:5002"
+      - ${CNN_TENSORBOARD_PORT:-5002}:${CNN_TENSORBOARD_PORT:-5002}
     volumes:
       - ./logs:/cnn/logs
     working_dir: /cnn
-    command: sh -c "rm -rf logs/* && tensorboard --host 0.0.0.0 --port 5002 --logdir logs"
+    command: sh -c "rm -rf logs/* && tensorboard --host 0.0.0.0 --port ${CNN_TENSORBOARD_PORT:-5002} --logdir logs"
