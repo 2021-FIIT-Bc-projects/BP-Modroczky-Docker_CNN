@@ -146,8 +146,8 @@ Príklad metadát v JSON súbore `obtain.json` pre skript [obtain.py](./src/scri
 ```json
 {
     "tsv_path": "data/mushroom_observer.tsv",
-    "dl_path": "path/to/download/folder",
-    "authors_path": "path/to/save/author/names",
+    "dl_path": "data/path/to/download/folder",
+    "authors_path": "data/path/to/save/author/names",
     "queries": [
         "amanita",
         "boletus",
@@ -198,8 +198,8 @@ Príklad metadát v JSON súbore `augment.json` pre skript [augment.py](./src/sc
             "psilocybe": 7
         }
     },
-    "data_path": "path/to/dataset/to/be/augmented",
-    "augmented_data_path": "path/to/store/augmented/dataset"
+    "data_path": "data/path/to/dataset/to/be/augmented",
+    "augmented_data_path": "data/path/to/store/augmented/dataset"
 }
 ```
 
