@@ -5,7 +5,7 @@ services:
     container_name: web-container
     build: .
     ports:
-      - "${CNN_GUNICORN_PORT:-5000}:${CNN_GUNICORN_PORT:-5000}"
+      - ${CNN_GUNICORN_PORT:-5000}:${CNN_GUNICORN_PORT:-5000}
     volumes:
       - ./models:/cnn/models
     working_dir: /cnn/src/webapp
