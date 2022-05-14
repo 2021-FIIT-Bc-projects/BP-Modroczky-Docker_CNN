@@ -108,10 +108,10 @@ Parameter `{service_name}` môže byť jedna zo služieb `obtain`, `augment`, `t
 Výpisy je potom možné vypísať alebo sledovať pomocou príkazu
 
 ```shell
-docker logs [--follow] {service_container_name}
+docker logs [--follow] {service_container}
 ```
 
-Parameter `{service_container_name}` je jeden z kontajnerov služby `obtain-container`, `augment-container`, `train-container`, `tensorboard-container` alebo `web-container`. Prepínač `--follow` zapne sledovanie všetkých nových výpisov kontajneru, čiže sa vypíšu doterajšie výpisy a budú sa aj naďalej sledovať.
+Parameter `{service_container}` je jeden z kontajnerov služby `obtain-container`, `augment-container`, `train-container`, `tensorboard-container` alebo `web-container`. Prepínač `--follow` zapne sledovanie všetkých nových výpisov kontajneru, čiže sa vypíšu doterajšie výpisy a budú sa aj naďalej sledovať.
 
 Na zastavenie kontajnerov aplikácie je potrebné vykonať príkaz
 
@@ -164,7 +164,7 @@ Príklad metadát v JSON súbore `obtain.json` pre skript [obtain.py](./src/scri
 
 `tsv_path` je umiestnenie súboru [tsv](https://drive.google.com/file/d/1fPXJtJpqiQEQb1ezINdFK-Jhee84DvMA/view?usp=sharing), ktorý obsahuje zoznam obrázkov húb z Mushroom Observer. Súbor `mushroom_observer.tsv` je predvolene umiestnený v `data/mushroom_observer.tsv`.\
 `dl_path` je priečinok, do ktorého sa majú obrázky sťahovať.\
-`authors_path` je priečinok, do ktorého sa má uložiť textový súbor s menami autorov obrázkov.\
+`authors_path` je priečinok, do ktorého sa majú uložiť textové súbory s menami autorov obrázkov pre jednotlivé druhy húb.\
 `queries` je zoznam názvov húb, ktoré sa majú stiahnuť.\
 `limit` je maximálny počet obrázkov, ktorý sa má stiahnuť pre jeden typ huby.
 
