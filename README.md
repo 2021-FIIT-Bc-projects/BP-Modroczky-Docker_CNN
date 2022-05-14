@@ -57,7 +57,7 @@ Model **VGG16** natrénovaný v prvom experimente je dostupný na [odkaze](https
 
 #### Inception-v3
 
-Model **Inception-v3** natrénovaný v druhom experimente je dostupný na [odkaze](https://drive.google.com/uc?id=12mCiBrNAvLkslWfrG0XckJp_OlboyEcr).
+Model **Inception-v3** natrénovaný v druhom experimente je dostupný na [odkaze](https://drive.google.com/uc?id=1vsENg88g9YI9ZiWeVveIIMPvwWTNvdRv).
 
 ### Docker
 
@@ -232,7 +232,7 @@ Podrobnosti o webovej aplikácii sú v sekcii [Webová aplikácia](#webová-apli
 
 ### Experiment 1 s modelom VGG16
 
-Notebook [vgg16.ipynb](src/notebooks/vgg16.ipynb) na trénovanie a testovanie modelu VGG16 bol spúšťaný na platforme [Kaggle](https://www.kaggle.com/viktormodroczky/vgg16-for-fungi-classification/notebook).
+Notebook [vgg16.ipynb](src/notebooks/vgg16.ipynb) na trénovanie a testovanie modelu VGG16 bol spúšťaný na platforme [Kaggle](https://www.kaggle.com/viktormodroczky/vgg16-for-fungi-classification/notebook) - aktuálna verzia je v29.
 
 <details>
 <summary><b>Vybudovaný model VGG16 pomocou Keras</b></summary>
@@ -243,7 +243,7 @@ Notebook [vgg16.ipynb](src/notebooks/vgg16.ipynb) na trénovanie a testovanie mo
 
 ### Experiment 2 s modelom Inception-v3 a preneseným učením
 
-Notebook [inception_v3.ipynb](src/notebooks/inception_v3.ipynb) na trénovanie a testovanie modelu Inception-v3 bol spúšťaný na platforme [Kaggle](https://www.kaggle.com/viktormodroczky/inception-v3-for-fungi-classification/notebook).
+Notebook [inception_v3.ipynb](src/notebooks/inception_v3.ipynb) na trénovanie a testovanie modelu Inception-v3 bol spúšťaný na platforme [Kaggle](https://www.kaggle.com/viktormodroczky/inception-v3-for-fungi-classification/notebook) - aktuálna verzia je v49.
 
 ### Webová aplikácia
 
