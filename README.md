@@ -53,7 +53,7 @@ Dataset pre trénovanie a testovanie modelu Inception-v3 je dostupný na [odkaze
 
 #### VGG16
 
-Model **VGG16** natrénovaný v prvom experimente je dostupný na [odkaze](https://drive.google.com/uc?id=1lRNyWJWmEYHFquGfqqPcqXrSVANk0jJW).
+Model **VGG16** natrénovaný v prvom experimente je dostupný na [odkaze](https://drive.google.com/uc?id=14azWroG6dg9Kws4D6KJA4j4pVyGxuk0I).
 
 #### Inception-v3
 
