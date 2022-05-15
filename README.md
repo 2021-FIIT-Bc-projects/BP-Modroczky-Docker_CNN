@@ -280,19 +280,19 @@ Používateľské rozhranie je implementované pomocou CSS rámca [Materialize](
 ##### Endpoint pre hlavnú stránku
 
 ```http
-host/
+host:port/
 ```
 
 ##### Endpoint pre VGG16 model
 
 ```http
-host/vgg16
+host:port/vgg16
 ```
 
 ##### Endpoint pre Inception-v3 model
 
 ```http
-host/inception-v3
+host:port/inception-v3
 ```
 
 ### Poznámky
