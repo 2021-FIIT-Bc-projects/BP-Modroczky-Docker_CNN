@@ -227,7 +227,7 @@ Služba `tensorboard` spúšťa aplikáciu Tensorboard na sledovanie trénovania
 
 ### Služba web
 
-Spustenie webovej aplikácie ako kontajnerizovanej služby `web` vyžaduje prítomnosť modelov vo forme súborov [`vgg16.h5`](https://drive.google.com/uc?id=1lRNyWJWmEYHFquGfqqPcqXrSVANk0jJW) a [`inception_v3.h5`](https://drive.google.com/uc?id=12mCiBrNAvLkslWfrG0XckJp_OlboyEcr) v priečinku `models` v koreňovom adresári projektu.\
+Spustenie webovej aplikácie ako kontajnerizovanej služby `web` vyžaduje prítomnosť modelov vo forme súborov [`vgg16.h5`](https://drive.google.com/uc?id=14azWroG6dg9Kws4D6KJA4j4pVyGxuk0I) a [`inception_v3.h5`](https://drive.google.com/uc?id=1vsENg88g9YI9ZiWeVveIIMPvwWTNvdRv) v priečinku `models` v koreňovom adresári projektu.\
 Podrobnosti o webovej aplikácii sú v sekcii [Webová aplikácia](#webová-aplikácia).
 
 ### Experiment 1 s modelom VGG16
